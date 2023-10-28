@@ -1,0 +1,4 @@
+{
+  "*": "npm run format:cmd -- -w",
+  "*.{ts,tsx}": "npm run lint:cmd -- --fix"
+}
