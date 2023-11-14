@@ -9,12 +9,9 @@ const initialSearchValue =
   localStorage.getItem(searchQueryLocalStorageKey) ?? defaultQueryValue;
 
 export const initialState: State = {
-  searchInputValue: initialSearchValue,
   searchSubmitValue: initialSearchValue,
   fetchedListData: { count: 0, list: [] },
 };
-
-export const SearchInputContext = createContext(initialState.searchInputValue);
 
 export const SearchSubmitContext = createContext(
   initialState.searchSubmitValue

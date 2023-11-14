@@ -2,6 +2,7 @@ export const isEnabledStrictMode = true;
 
 export const searchQueryLocalStorageKey = '[ER-23Q4]searchQuery';
 
+export const queryParamName = 'search';
 export const defaultQueryValue = '';
 
 export const pageParamName = 'page';

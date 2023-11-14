@@ -1,7 +1,6 @@
 import { RenderResult, render } from '@testing-library/react';
 import {
   FetchedListDataContext,
-  SearchInputContext,
   SearchSubmitContext,
   StoreDispatchContext,
   initialState,
@@ -24,7 +23,6 @@ type AllProvidersProps = {
 
 export const MockContextProvider: FC<AllProvidersProps> = ({
   children,
-  searchInputValue = initialState.searchInputValue,
   searchSubmitValue = initialState.searchSubmitValue,
   fetchedListData = initialState.fetchedListData,
   dispatch = (): never => {
@@ -32,15 +30,13 @@ export const MockContextProvider: FC<AllProvidersProps> = ({
   },
 }: AllProvidersProps) => {
   return (
-    <SearchInputContext.Provider value={searchInputValue}>
-      <SearchSubmitContext.Provider value={searchSubmitValue}>
-        <FetchedListDataContext.Provider value={fetchedListData}>
-          <StoreDispatchContext.Provider value={dispatch}>
-            {children}
-          </StoreDispatchContext.Provider>
-        </FetchedListDataContext.Provider>
-      </SearchSubmitContext.Provider>
-    </SearchInputContext.Provider>
+    <SearchSubmitContext.Provider value={searchSubmitValue}>
+      <FetchedListDataContext.Provider value={fetchedListData}>
+        <StoreDispatchContext.Provider value={dispatch}>
+          {children}
+        </StoreDispatchContext.Provider>
+      </FetchedListDataContext.Provider>
+    </SearchSubmitContext.Provider>
   );
 };
 

@@ -9,7 +9,6 @@ import {
 import { TVShowListResponse } from 'shared/api/myshows/myshows.service';
 import {
   FetchedListDataContext,
-  SearchInputContext,
   SearchSubmitContext,
   StoreDispatchContext,
   initialState,
@@ -17,9 +16,6 @@ import {
 import { storeReducer } from './model/reducer';
 import { Action } from './model/types.type';
 
-export function useSearchInputContext(): string {
-  return useContext(SearchInputContext);
-}
 export function useSearchSubmitContext(): string {
   return useContext(SearchSubmitContext);
 }
@@ -32,19 +28,17 @@ export function useStoreDispatch(): Dispatch<Action> {
 
 export const StoreProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const [state, dispatch] = useReducer(storeReducer, initialState);
-  const { fetchedListData, searchInputValue, searchSubmitValue } = state;
+  const { fetchedListData, searchSubmitValue } = state;
 
   const memoFetchedListData = useMemo(() => fetchedListData, [fetchedListData]);
 
   return (
-    <SearchInputContext.Provider value={searchInputValue}>
-      <SearchSubmitContext.Provider value={searchSubmitValue}>
-        <FetchedListDataContext.Provider value={memoFetchedListData}>
-          <StoreDispatchContext.Provider value={dispatch}>
-            {children}
-          </StoreDispatchContext.Provider>
-        </FetchedListDataContext.Provider>
-      </SearchSubmitContext.Provider>
-    </SearchInputContext.Provider>
+    <SearchSubmitContext.Provider value={searchSubmitValue}>
+      <FetchedListDataContext.Provider value={memoFetchedListData}>
+        <StoreDispatchContext.Provider value={dispatch}>
+          {children}
+        </StoreDispatchContext.Provider>
+      </FetchedListDataContext.Provider>
+    </SearchSubmitContext.Provider>
   );
 };
