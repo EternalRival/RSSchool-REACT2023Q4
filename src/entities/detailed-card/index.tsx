@@ -1,12 +1,13 @@
-import { ImagePlaceholder } from 'entities/image-placeholder';
+import { useGetByIdQuery } from 'app/redux/api/myshows.service';
 import { Skeleton } from 'features/skeleton';
-import { FC, MouseEventHandler, useMemo } from 'react';
+import { FC, MouseEventHandler, useEffect } from 'react';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { Endpoint, defaultLanguage } from 'shared/constants';
 import styles from './detailed-card.module.css';
-import { useFetchDetailedCardData } from './lib/use-fetch-detailed-card-data';
 import { DetailType } from './model/detailed-card.type';
 import closeIconSrc from './ui/close-icon.svg';
+import { setIsListLoading } from 'app/redux/slices/loading-list-flag-slice';
+import { useAppDispatch } from 'app/redux/hooks';
 
 const Detail: FC<DetailType> = ({ title, value, secondaryValue, href }) => {
   if (value) {
@@ -40,23 +41,15 @@ export const DetailedCard: FC = () => {
     navigation(`${Endpoint.ROOT}${location.search}`);
   };
 
-  const fetchTVShowDetailsParams = useMemo(
-    () => ({ showId: +id, withEpisodes: true }),
-    [id]
-  );
+  const { isFetching, currentData, isLoading } = useGetByIdQuery({
+    params: { showId: +id, withEpisodes: true },
+    lang: defaultLanguage,
+  });
 
-  const { error, details, isFetching } = useFetchDetailedCardData(
-    fetchTVShowDetailsParams,
-    defaultLanguage
-  );
-
-  if (error) {
-    throw error;
-  }
-
-  if (details === null) {
-    return <ImagePlaceholder />;
-  }
+  const dispatch = useAppDispatch();
+  useEffect(() => {
+    dispatch(setIsListLoading(isLoading));
+  }, [dispatch, isLoading]);
 
   const {
     title,
@@ -76,7 +69,7 @@ export const DetailedCard: FC = () => {
     kinopoiskRating,
     kinopoiskUrl,
     rating,
-  } = details;
+  } = currentData ?? {};
 
   return (
     <Skeleton enabled={isFetching}>

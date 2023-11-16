@@ -1,6 +1,5 @@
 import { RenderResult, cleanup, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { StoreProvider } from 'app/store';
 import { searchQueryLocalStorageKey } from 'shared/constants';
 import { renderWithRouter } from 'tests/test-utils';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
@@ -9,11 +8,7 @@ import { Search } from '.';
 describe('Search', () => {
   const user = userEvent.setup();
   const renderSearch = (): RenderResult => {
-    return renderWithRouter(
-      <StoreProvider>
-        <Search />
-      </StoreProvider>
-    );
+    return renderWithRouter(<Search />);
   };
 
   const storageGetSpy = vi.spyOn(Storage.prototype, 'getItem');

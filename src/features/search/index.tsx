@@ -1,5 +1,5 @@
 import { useAppDispatch } from 'app/redux/hooks';
-import { set } from 'app/redux/search-value/search-value-slice';
+import { setSearchValue } from 'app/redux/slices/search-value-slice';
 import { FC, FormEventHandler } from 'react';
 import { useFetcher } from 'react-router-dom';
 import {
@@ -23,7 +23,7 @@ export const Search: FC = () => {
       const formData = new FormData(e.target);
       const formDataEntryValue = formData.get(queryParamName);
       const submitValue = formDataEntryValue?.toString() ?? defaultQueryValue;
-      searchValueDispatch(set(submitValue));
+      searchValueDispatch(setSearchValue(submitValue));
     }
   };
 

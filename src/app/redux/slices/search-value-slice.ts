@@ -4,23 +4,23 @@ import {
   searchQueryLocalStorageKey,
 } from 'shared/constants';
 
-type SearchValueState = { value: string };
+type State = { value: string };
 
-const initialState = (): SearchValueState => ({
+const initialState = (): State => ({
   value: localStorage.getItem(searchQueryLocalStorageKey) ?? defaultQueryValue,
 });
 
-const searchValueSlice = createSlice({
+const { actions, reducer } = createSlice({
   name: 'searchValue',
   initialState,
   reducers: {
-    set(state, { payload }: PayloadAction<string>) {
+    setSearchValue(state, { payload }: PayloadAction<string>) {
       localStorage.setItem(searchQueryLocalStorageKey, payload);
       state.value = payload;
     },
   },
 });
 
-export const searchValueReducer = searchValueSlice.reducer;
+export const searchValueReducer = reducer;
 
-export const { set } = searchValueSlice.actions;
+export const { setSearchValue } = actions;

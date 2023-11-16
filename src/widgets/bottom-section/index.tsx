@@ -1,59 +1,69 @@
-import { useAppSelector } from 'app/redux/hooks';
-import { useStoreDispatch } from 'app/store';
-import { ActionType } from 'app/store/model/enums';
+import { useGetListByTitleQuery } from 'app/redux/api/myshows.service';
+import { useAppDispatch, useAppSelector } from 'app/redux/hooks';
+import { setItemsPerPage } from 'app/redux/slices/items-per-page-slice';
 import { CardList } from 'features/card-list';
 import { Pagination } from 'features/pagination';
 import { Skeleton } from 'features/skeleton';
-import { useFetchCardListData } from 'pages/main-page/lib/use-fetch-card-list-data';
-import { FC, useCallback } from 'react';
+import { FC, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { TVShowListResponse } from 'shared/api/myshows/myshows.service';
 import {
   defaultLanguage,
   defaultPageSizeValue,
   defaultPageValue,
   pageParamName,
-  pageSizeParamName,
 } from 'shared/constants';
 import styles from './bottom-section.module.css';
+import { setIsListLoading } from 'app/redux/slices/loading-list-flag-slice';
 
 export const BottomSection: FC = () => {
-  const dispatch = useStoreDispatch();
-  const searchValue = useAppSelector((state) => state.searchValue.value);
-  const [searchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams();
+  const searchValue = useAppSelector(({ searchValue }) => searchValue.value);
+  const pageSize = useAppSelector(({ itemsPerPage }) => itemsPerPage.value);
+  const dispatch = useAppDispatch();
 
   const page = +(searchParams.get(pageParamName) ?? defaultPageValue);
-  const pageSize = +(
-    searchParams.get(pageSizeParamName) ?? defaultPageSizeValue
-  );
 
-  const updateFetchedList = useCallback(
-    (fetchedListData: TVShowListResponse) => {
-      dispatch({ type: ActionType.ChangedFetchedListState, fetchedListData });
-    },
-    [dispatch]
-  );
-  const { error, isFetching } = useFetchCardListData(
-    {
+  const { currentData, isFetching, isLoading } = useGetListByTitleQuery({
+    params: {
       search: { query: searchValue },
       page: page - 1,
       pageSize,
     },
-    defaultLanguage,
-    updateFetchedList
-  );
+    lang: defaultLanguage,
+  });
+  const list = currentData?.list ?? [];
+  const count = currentData?.count ?? 0;
 
-  if (error) {
-    throw error;
-  }
+  useEffect(() => {
+    dispatch(setIsListLoading(isLoading));
+  }, [dispatch, isLoading]);
 
   return (
     <Skeleton enabled={isFetching}>
       <div className={`${styles.tvShowListSection} scrollbar`}>
-        <CardList />
+        <CardList list={list} />
       </div>
       <div className={styles.paginationSection}>
-        <Pagination />
+        <Pagination
+          count={count}
+          pageSizeOptions={[5, 10, 20, 30, 50]}
+          page={page}
+          pageSize={pageSize}
+          defaultPageSize={defaultPageSizeValue}
+          setPage={(value) => {
+            setSearchParams((prev) => ({
+              ...Object.fromEntries(prev.entries()),
+              [pageParamName]: value.toString(),
+            }));
+          }}
+          setPageSize={(value) => {
+            setSearchParams((prev) => ({
+              ...Object.fromEntries(prev.entries()),
+              [pageParamName]: defaultPageValue.toString(),
+            }));
+            dispatch(setItemsPerPage(value));
+          }}
+        />
       </div>
     </Skeleton>
   );

@@ -3,9 +3,8 @@ import { FC } from 'react';
 import { Provider } from 'react-redux';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import './index.css';
-import { routes } from './router';
-import { StoreProvider } from './store';
 import { store } from './redux/store';
+import { routes } from './router';
 
 export const App: FC = () => {
   const errorFallback = <h1>[ErrorBoundary]: App Error :(</h1>;
@@ -13,11 +12,9 @@ export const App: FC = () => {
 
   return (
     <ErrorBoundary fallback={errorFallback}>
-      <StoreProvider>
-        <Provider store={store}>
-          <RouterProvider router={router} />;
-        </Provider>
-      </StoreProvider>
+      <Provider store={store}>
+        <RouterProvider router={router} />;
+      </Provider>
     </ErrorBoundary>
   );
 };

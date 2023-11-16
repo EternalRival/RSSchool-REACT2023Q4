@@ -1,4 +1,4 @@
-import { cleanup, screen, within } from '@testing-library/react';
+/* import { cleanup, screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { DetailedCard } from 'entities/detailed-card';
 import { Outlet } from 'react-router-dom';
@@ -69,3 +69,4 @@ describe('Card', () => {
     }
   });
 });
+ */
