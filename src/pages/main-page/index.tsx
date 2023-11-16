@@ -1,4 +1,3 @@
-import { StoreProvider } from 'app/store';
 import { ErrorThrowingButton } from 'features/error-throwing-button';
 import { FC } from 'react';
 import { Outlet } from 'react-router';
@@ -12,10 +11,8 @@ export const MainPage: FC = () => {
       <main className={styles.main}>
         <ErrorThrowingButton />
         <h1 hidden={true}>TV Shows App</h1>
-        <StoreProvider>
-          <TopSection />
-          <BottomSection />
-        </StoreProvider>
+        <TopSection />
+        <BottomSection />
       </main>
       <Outlet />
     </>

@@ -1,5 +1,5 @@
-import { useStoreDispatch } from 'app/store';
-import { ActionType } from 'app/store/model/enums';
+import { useAppDispatch } from 'app/redux/hooks';
+import { set } from 'app/redux/search-value/search-value-slice';
 import { FC, FormEventHandler } from 'react';
 import { useFetcher } from 'react-router-dom';
 import {
@@ -12,9 +12,10 @@ import searchIconSrc from './ui/search-icon.svg';
 
 export const Search: FC = () => {
   const fetcher = useFetcher();
-  const dispatch = useStoreDispatch();
   const defaultValue =
     localStorage.getItem(searchQueryLocalStorageKey) ?? defaultQueryValue;
+
+  const searchValueDispatch = useAppDispatch();
 
   const handleFormSubmit: FormEventHandler<HTMLFormElement> = (e) => {
     e.preventDefault();
@@ -22,10 +23,7 @@ export const Search: FC = () => {
       const formData = new FormData(e.target);
       const formDataEntryValue = formData.get(queryParamName);
       const submitValue = formDataEntryValue?.toString() ?? defaultQueryValue;
-      dispatch({
-        type: ActionType.ClickedSearchSubmit,
-        searchValue: submitValue,
-      });
+      searchValueDispatch(set(submitValue));
     }
   };
 

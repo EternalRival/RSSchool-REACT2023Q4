@@ -1,4 +1,5 @@
-import { useSearchSubmitContext, useStoreDispatch } from 'app/store';
+import { useAppSelector } from 'app/redux/hooks';
+import { useStoreDispatch } from 'app/store';
 import { ActionType } from 'app/store/model/enums';
 import { CardList } from 'features/card-list';
 import { Pagination } from 'features/pagination';
@@ -18,7 +19,7 @@ import styles from './bottom-section.module.css';
 
 export const BottomSection: FC = () => {
   const dispatch = useStoreDispatch();
-  const searchSubmitValue = useSearchSubmitContext();
+  const searchValue = useAppSelector((state) => state.searchValue.value);
   const [searchParams] = useSearchParams();
 
   const page = +(searchParams.get(pageParamName) ?? defaultPageValue);
@@ -34,7 +35,7 @@ export const BottomSection: FC = () => {
   );
   const { error, isFetching } = useFetchCardListData(
     {
-      search: { query: searchSubmitValue },
+      search: { query: searchValue },
       page: page - 1,
       pageSize,
     },
