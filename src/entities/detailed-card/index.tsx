@@ -1,4 +1,6 @@
 import { useGetByIdQuery } from 'app/redux/api/myshows.service';
+import { useAppDispatch } from 'app/redux/hooks';
+import { setDetailsFlags } from 'app/redux/slices/details-flags-slice';
 import { Skeleton } from 'features/skeleton';
 import { FC, MouseEventHandler, useEffect } from 'react';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
@@ -6,8 +8,6 @@ import { Endpoint, defaultLanguage } from 'shared/constants';
 import styles from './detailed-card.module.css';
 import { DetailType } from './model/detailed-card.type';
 import closeIconSrc from './ui/close-icon.svg';
-import { setIsListLoading } from 'app/redux/slices/loading-list-flag-slice';
-import { useAppDispatch } from 'app/redux/hooks';
 
 const Detail: FC<DetailType> = ({ title, value, secondaryValue, href }) => {
   if (value) {
@@ -41,15 +41,30 @@ export const DetailedCard: FC = () => {
     navigation(`${Endpoint.ROOT}${location.search}`);
   };
 
-  const { isFetching, currentData, isLoading } = useGetByIdQuery({
+  const {
+    currentData,
+    isFetching,
+    isLoading,
+    isError,
+    isSuccess,
+    isUninitialized,
+  } = useGetByIdQuery({
     params: { showId: +id, withEpisodes: true },
     lang: defaultLanguage,
   });
 
   const dispatch = useAppDispatch();
   useEffect(() => {
-    dispatch(setIsListLoading(isLoading));
-  }, [dispatch, isLoading]);
+    dispatch(
+      setDetailsFlags({
+        isFetching,
+        isLoading,
+        isError,
+        isSuccess,
+        isUninitialized,
+      })
+    );
+  }, [dispatch, isError, isFetching, isLoading, isSuccess, isUninitialized]);
 
   const {
     title,

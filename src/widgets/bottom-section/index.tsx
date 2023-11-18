@@ -1,6 +1,7 @@
 import { useGetListByTitleQuery } from 'app/redux/api/myshows.service';
 import { useAppDispatch, useAppSelector } from 'app/redux/hooks';
 import { setItemsPerPage } from 'app/redux/slices/items-per-page-slice';
+import { setListFlags } from 'app/redux/slices/list-flags-slice';
 import { CardList } from 'features/card-list';
 import { Pagination } from 'features/pagination';
 import { Skeleton } from 'features/skeleton';
@@ -13,7 +14,6 @@ import {
   pageParamName,
 } from 'shared/constants';
 import styles from './bottom-section.module.css';
-import { setIsListLoading } from 'app/redux/slices/loading-list-flag-slice';
 
 export const BottomSection: FC = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -23,7 +23,14 @@ export const BottomSection: FC = () => {
 
   const page = +(searchParams.get(pageParamName) ?? defaultPageValue);
 
-  const { currentData, isFetching, isLoading } = useGetListByTitleQuery({
+  const {
+    currentData,
+    isFetching,
+    isLoading,
+    isError,
+    isSuccess,
+    isUninitialized,
+  } = useGetListByTitleQuery({
     params: {
       search: { query: searchValue },
       page: page - 1,
@@ -35,8 +42,16 @@ export const BottomSection: FC = () => {
   const count = currentData?.count ?? 0;
 
   useEffect(() => {
-    dispatch(setIsListLoading(isLoading));
-  }, [dispatch, isLoading]);
+    dispatch(
+      setListFlags({
+        isFetching,
+        isLoading,
+        isError,
+        isSuccess,
+        isUninitialized,
+      })
+    );
+  }, [dispatch, isError, isFetching, isLoading, isSuccess, isUninitialized]);
 
   return (
     <Skeleton enabled={isFetching}>

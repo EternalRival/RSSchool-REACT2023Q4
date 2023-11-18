@@ -1,3 +1,4 @@
+import { Demo } from 'features/demo';
 import { ErrorBoundary } from 'features/error-boundary';
 import { FC } from 'react';
 import { Provider } from 'react-redux';
@@ -13,7 +14,8 @@ export const App: FC = () => {
   return (
     <ErrorBoundary fallback={errorFallback}>
       <Provider store={store}>
-        <RouterProvider router={router} />;
+        <RouterProvider router={router} />
+        <Demo />
       </Provider>
     </ErrorBoundary>
   );

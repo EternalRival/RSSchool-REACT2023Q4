@@ -1,8 +1,8 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { myShowsApi } from './api/myshows.service';
+import { detailsFlagsReducer } from './slices/details-flags-slice';
 import { itemsPerPageReducer } from './slices/items-per-page-slice';
-import { loadingDetailsFlagReducer } from './slices/loading-details-flag-slice';
-import { loadingListFlagReducer } from './slices/loading-list-flag-slice';
+import { listFlagsReducer } from './slices/list-flags-slice';
 import { searchValueReducer } from './slices/search-value-slice';
 
 export const store = configureStore({
@@ -10,8 +10,8 @@ export const store = configureStore({
     searchValue: searchValueReducer,
     itemsPerPage: itemsPerPageReducer,
     [myShowsApi.reducerPath]: myShowsApi.reducer,
-    loadingListFlag: loadingListFlagReducer,
-    loadingDetailsFlag: loadingDetailsFlagReducer,
+    listFlags: listFlagsReducer,
+    detailsFlags: detailsFlagsReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(myShowsApi.middleware),
