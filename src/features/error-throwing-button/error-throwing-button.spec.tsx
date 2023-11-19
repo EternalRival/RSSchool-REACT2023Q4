@@ -1,15 +1,11 @@
-import { cleanup, render, screen } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { ErrorBoundary } from 'features/error-boundary';
-import { afterEach, describe, expect, it, vi } from 'vitest';
+import { describe, expect, it, vi } from 'vitest';
 import { ErrorThrowingButton } from '.';
 
 describe('Error throwing button', () => {
   const user = userEvent.setup();
-
-  afterEach(() => {
-    cleanup();
-  });
 
   it('Pressing the button calls Errorboundary fallback', async () => {
     const errorMessage = 'Error thrown';

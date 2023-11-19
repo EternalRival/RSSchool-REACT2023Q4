@@ -1,23 +1,23 @@
-import { cleanup, screen } from '@testing-library/react';
-import { renderWithRouter } from 'tests/test-utils';
-import { afterEach, describe, expect, it } from 'vitest';
+import { render, screen } from '@testing-library/react';
+import { describe, expect, it } from 'vitest';
 import { ErrorMessage, ErrorPage } from '.';
+import { MemoryRouter } from 'tests/test-utils';
 
 describe('Error page', () => {
-  afterEach(() => {
-    cleanup();
-  });
-
   it('ErrorMessage component prints error message', async () => {
     const errorMessage = 'Error thrown';
 
-    renderWithRouter(<ErrorMessage error={new Error(errorMessage)} />);
+    render(
+      <MemoryRouter
+        element={<ErrorMessage error={new Error(errorMessage)} />}
+      />
+    );
 
     expect(screen.getByText(errorMessage)).toBeVisible();
   });
 
   it('Error page renders', async () => {
-    renderWithRouter(<ErrorPage />);
+    render(<MemoryRouter element={<ErrorPage />} />);
 
     expect(
       screen.getByRole('heading', { name: /errorboundary/i })
