@@ -25,9 +25,3 @@ export type AppDispatch = typeof store.dispatch;
 export const StoreProvider: FC<{ children: ReactNode }> = ({ children }) => {
   return <Provider store={store}>{children}</Provider>;
 };
-
-// Search Value        - search submit
-// Items per page
-// View mode ?
-// Loading list flag
-// Loading details flag

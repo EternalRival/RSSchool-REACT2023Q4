@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
+import { MemoryRouter } from 'tests/test-utils';
 import { describe, expect, it } from 'vitest';
 import { ErrorMessage, ErrorPage } from '.';
-import { MemoryRouter } from 'tests/test-utils';
 
 describe('Error page', () => {
   it('ErrorMessage component prints error message', async () => {

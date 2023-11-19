@@ -6,6 +6,6 @@ export type GetRequestBodySearch = {
   watching?: number;
   category?: string;
   status?: string;
-  sort?: string; // totalSeasons_desc, year_asc etc. ,
+  sort?: string;
   query?: string;
 };

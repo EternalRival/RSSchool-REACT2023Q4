@@ -7,18 +7,19 @@
     "dev": "vite --host",
     "build": "tsc && vite build",
     "lint:cmd": "eslint --ext .ts,.tsx --report-unused-disable-directives --no-inline-config --max-warnings 0",
-    "lints:cmd": "stylelint --mw 0",
-    "format:cmd": "prettier -lu",
     "lint": "npm run lint:cmd -- .",
-    "lints": "npm run lints:cmd -- \"src/**/*.css\"",
-    "format": "npm run format:cmd -- .",
     "lint:fix": "npm run lint -- --fix",
-    "lints:fix": "npm run lints -- --fix",
-    "format:fix": "npm run format -- -w",
+    "lints:fix": "stylelint --mw 0 --fix \"src/**/*.css\"",
+    "format:fix": "prettier -luw .",
     "fix": "npm run format:fix && npm run lint:fix && npm run lints:fix",
     "preview": "vite preview",
     "prepare": "husky install",
     "test": "vitest run --coverage"
+  },
+  "lint-staged": {
+    "*": "prettier -luw",
+    "*.{ts,tsx}": "npm run lint:cmd -- --fix",
+    "*.css": "stylelint --mw 0 --fix"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^6.1.4",
