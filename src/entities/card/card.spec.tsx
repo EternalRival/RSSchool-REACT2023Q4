@@ -1,13 +1,13 @@
 import { render, screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { DetailedCard } from 'entities/detailed-card';
+import * as MyShowsApiService from 'app/redux/api/myshows.service';
+import { DetailedSection } from 'features/detailed-section';
 import { Outlet } from 'react-router-dom';
 import { Endpoint } from 'shared/constants';
 import { mockListItem } from 'tests/mock/mock-list-response';
 import { MemoryRouter, MemoryRouterWithStore } from 'tests/test-utils';
 import { describe, expect, it, vi } from 'vitest';
 import { Card } from '.';
-import * as MyShowsApiService from 'app/redux/api/myshows.service';
 
 describe('Card', () => {
   const user = userEvent.setup();
@@ -37,7 +37,7 @@ describe('Card', () => {
             <Outlet />
           </>
         }
-        subElement={<DetailedCard />}
+        subElement={<DetailedSection />}
         subPath={`${Endpoint.DETAILS}:id`}
       />
     );
@@ -57,7 +57,7 @@ describe('Card', () => {
             <Outlet />
           </>
         }
-        subElement={<DetailedCard />}
+        subElement={<DetailedSection />}
         subPath={`${Endpoint.DETAILS}:id`}
       />
     );

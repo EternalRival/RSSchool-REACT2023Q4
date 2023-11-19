@@ -1,4 +1,4 @@
-import { DetailedCard } from 'entities/detailed-card';
+import { DetailedSection } from 'features/detailed-section';
 import { ErrorPage } from 'pages/error-page';
 import { MainPage } from 'pages/main-page';
 import { NotFoundPage } from 'pages/not-found-page';
@@ -12,7 +12,7 @@ export const routes = [
     children: [
       {
         path: `${Endpoint.DETAILS}:id`,
-        element: <DetailedCard />,
+        element: <DetailedSection />,
         errorElement: <ErrorPage />,
       },
     ],

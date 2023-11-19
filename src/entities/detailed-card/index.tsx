@@ -1,10 +1,6 @@
-import { useGetByIdQuery } from 'app/redux/api/myshows.service';
-import { useAppDispatch } from 'app/redux/hooks';
-import { setDetailsFlags } from 'app/redux/slices/details-flags-slice';
-import { Skeleton } from 'features/skeleton';
-import { FC, MouseEventHandler, useEffect } from 'react';
-import { useLocation, useNavigate, useParams } from 'react-router-dom';
-import { Endpoint, defaultLanguage } from 'shared/constants';
+import { FC, MouseEventHandler } from 'react';
+import { GetByIdResponseBody } from 'shared/api/myshows/types/get-by-id-response-body.type';
+import { defaultLanguage } from 'shared/constants';
 import styles from './detailed-card.module.css';
 import { DetailType } from './model/detailed-card.type';
 import closeIconSrc from './ui/close-icon.svg';
@@ -29,117 +25,72 @@ const Detail: FC<DetailType> = ({ title, value, secondaryValue, href }) => {
   }
 };
 
-export const DetailedCard: FC = () => {
-  const { id } = useParams();
-  const location = useLocation();
-  const navigation = useNavigate();
-  if (typeof id === 'undefined') {
-    throw new Error('Wrong query types');
-  }
-
-  const handleClose: MouseEventHandler = () => {
-    navigation(`${Endpoint.ROOT}${location.search}`);
-  };
-
-  const {
-    currentData,
-    isFetching,
-    isLoading,
-    isError,
-    isSuccess,
-    isUninitialized,
-  } = useGetByIdQuery({
-    params: { showId: +id, withEpisodes: true },
-    lang: defaultLanguage,
-  });
-
-  const dispatch = useAppDispatch();
-  useEffect(() => {
-    dispatch(
-      setDetailsFlags({
-        isFetching,
-        isLoading,
-        isError,
-        isSuccess,
-        isUninitialized,
-      })
-    );
-  }, [dispatch, isError, isFetching, isLoading, isSuccess, isUninitialized]);
-
-  const {
-    title,
-    titleOriginal,
-    status,
-    started,
-    ended,
-    countryTitle,
-    country,
-    network,
-    runtimeTotal,
-    runtime,
-    episodes,
-    totalSeasons,
-    imdbRating,
-    imdbUrl,
-    kinopoiskRating,
-    kinopoiskUrl,
-    rating,
-  } = currentData ?? {};
-
+export const DetailedCard: FC<
+  GetByIdResponseBody & { handleClose: MouseEventHandler }
+> = ({
+  handleClose,
+  title,
+  titleOriginal,
+  started,
+  ended,
+  countryTitle,
+  country,
+  network,
+  runtimeTotal,
+  runtime,
+  episodes,
+  totalSeasons,
+  imdbRating,
+  imdbUrl,
+  kinopoiskRating,
+  kinopoiskUrl,
+  rating,
+  id,
+  status,
+}) => {
   return (
-    <Skeleton enabled={isFetching}>
-      <div className={styles.interceptor} onClick={handleClose} />
-      <aside className={`${styles.container} scrollbar`}>
-        <button className={styles.close} onClick={handleClose}>
-          <img src={closeIconSrc} alt="close button" width={24} height={24} />
-        </button>
-        <h2 className={styles.heading}>
-          {title}
-          {titleOriginal && titleOriginal !== title && ` (${titleOriginal})`}
-        </h2>
-        <dl className={styles.detailList}>
-          <Detail title="Status" value={status} />
-          {(started || ended) && (
-            <>
-              <dt className={styles.title}>Date:</dt>
-              <dd className={styles.details}>
-                {started
-                  ? new Date(started).toLocaleDateString(defaultLanguage)
-                  : '…'}
-                {' - '}
-                {ended
-                  ? new Date(ended).toLocaleDateString(defaultLanguage)
-                  : '…'}
-              </dd>
-            </>
-          )}
-          <Detail
-            title="Country"
-            value={countryTitle}
-            secondaryValue={country}
-          />
-          <Detail title="Network" value={network?.title} />
-          <Detail title="Total running time" value={runtimeTotal} />
-          <Detail title="Episode duration (min)" value={runtime} />
-          <Detail title="Episodes count" value={episodes?.length} />
-          <Detail title="Seasons" value={totalSeasons} />
-          <Detail
-            title="IMDB Rating (of 10)"
-            value={imdbRating}
-            href={imdbUrl}
-          />
-          <Detail
-            title="Kinopoisk Rating (of 10)"
-            value={kinopoiskRating}
-            href={kinopoiskUrl}
-          />
-          <Detail
-            title="MyShows Rating (of 5)"
-            value={rating}
-            href={`https://myshows.me/view/${id}`}
-          />
-        </dl>
-      </aside>
-    </Skeleton>
+    <aside className={`${styles.container} scrollbar`}>
+      <button className={styles.close} onClick={handleClose}>
+        <img src={closeIconSrc} alt="close button" width={24} height={24} />
+      </button>
+      <h2 className={styles.heading}>
+        {title}
+        {titleOriginal && titleOriginal !== title && ` (${titleOriginal})`}
+      </h2>
+      <dl className={styles.detailList}>
+        <Detail title="Status" value={status} />
+        {(started || ended) && (
+          <>
+            <dt className={styles.title}>Date:</dt>
+            <dd className={styles.details}>
+              {started
+                ? new Date(started).toLocaleDateString(defaultLanguage)
+                : '…'}
+              {' - '}
+              {ended
+                ? new Date(ended).toLocaleDateString(defaultLanguage)
+                : '…'}
+            </dd>
+          </>
+        )}
+        <Detail title="Country" value={countryTitle} secondaryValue={country} />
+        <Detail title="Network" value={network?.title} />
+        <Detail title="Total running time" value={runtimeTotal} />
+        <Detail title="Episode duration (min)" value={runtime} />
+        <Detail title="Episodes count" value={episodes?.length} />
+        <Detail title="Seasons" value={totalSeasons} />
+        <Detail title="IMDB Rating (of 10)" value={imdbRating} href={imdbUrl} />
+        <Detail
+          title="Kinopoisk Rating (of 10)"
+          value={kinopoiskRating}
+          href={kinopoiskUrl}
+        />
+        <Detail
+          title="MyShows Rating (of 5)"
+          value={rating}
+          href={`https://myshows.me/view/${id}`}
+        />
+      </dl>
+    </aside>
   );
 };

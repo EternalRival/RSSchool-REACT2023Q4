@@ -8,21 +8,27 @@ type MemoryRouterProps = {
   path?: string;
   subElement?: ReactNode;
   subPath?: string;
-};
+} & Parameters<typeof createMemoryRouter>[1];
 
 export const MemoryRouter: FC<MemoryRouterProps> = ({
   element,
   path = Endpoint.ROOT,
   subElement,
   subPath = Endpoint.DETAILS,
+  initialEntries,
+  initialIndex,
 }) => {
   const routes = subElement
     ? [{ path, element, children: [{ path: subPath, element: subElement }] }]
     : [{ path, element }];
-  return <RouterProvider router={createMemoryRouter(routes)} />;
+  return (
+    <RouterProvider
+      router={createMemoryRouter(routes, { initialEntries, initialIndex })}
+    />
+  );
 };
 
-export const MemoryRouterWithStore: FC<MemoryRouterProps> = (args) => {
+export const MemoryRouterWithStore: typeof MemoryRouter = (args) => {
   return (
     <StoreProvider>
       <MemoryRouter {...args} />
