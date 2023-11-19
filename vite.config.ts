@@ -29,6 +29,5 @@ export default defineConfig({
       exclude: ['**/*.type.*'],
     },
     setupFiles: './src/tests/vitest-setup.ts',
-    teardownTimeout: 5000,
   },
 })

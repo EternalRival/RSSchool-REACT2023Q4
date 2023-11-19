@@ -1,9 +1,11 @@
 import { useAppDispatch } from 'app/redux/hooks'
 import { setSearchValue } from 'app/redux/slices/search-value-slice'
 import { FC, FormEventHandler } from 'react'
-import { useFetcher } from 'react-router-dom'
+import { useFetcher, useSearchParams } from 'react-router-dom'
 import {
+  defaultPageValue,
   defaultQueryValue,
+  pageParamName,
   queryParamName,
   searchQueryLocalStorageKey,
 } from 'shared/constants'
@@ -12,6 +14,7 @@ import searchIconSrc from './ui/search-icon.svg'
 
 export const Search: FC = () => {
   const fetcher = useFetcher()
+  const [, setSearchParams] = useSearchParams()
   const defaultValue =
     localStorage.getItem(searchQueryLocalStorageKey) ?? defaultQueryValue
 
@@ -23,6 +26,10 @@ export const Search: FC = () => {
       const formData = new FormData(e.target)
       const formDataEntryValue = formData.get(queryParamName)
       const submitValue = formDataEntryValue?.toString() ?? defaultQueryValue
+      setSearchParams((prev) => ({
+        ...Object.fromEntries(prev.entries()),
+        [pageParamName]: defaultPageValue.toString(),
+      }))
       searchValueDispatch(setSearchValue(submitValue))
     }
   }
