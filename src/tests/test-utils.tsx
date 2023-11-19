@@ -1,29 +1,31 @@
-import { RenderResult, render } from '@testing-library/react';
-import { ReactNode } from 'react';
+import { StoreProvider } from 'app/redux/store';
+import { FC, ReactNode } from 'react';
 import { RouterProvider, createMemoryRouter } from 'react-router-dom';
 import { Endpoint } from 'shared/constants';
 
-type RouterOpts = Parameters<typeof createMemoryRouter>[1];
-
-export const renderWithRouter = (
-  element: ReactNode,
-  opts?: RouterOpts,
-  path = Endpoint.ROOT
-): RenderResult => {
-  const router = createMemoryRouter([{ path, element }], opts);
-  return render(<RouterProvider router={router} />);
+type MemoryRouterProps = {
+  element: ReactNode;
+  path?: string;
+  subElement?: ReactNode;
+  subPath?: string;
 };
 
-export const renderWithNestedRouter = (
-  element: ReactNode,
-  children: ReactNode,
-  opts?: Parameters<typeof createMemoryRouter>[1],
-  path: string = Endpoint.ROOT,
-  subPath: string = Endpoint.DETAILS
-): RenderResult => {
-  const router = createMemoryRouter(
-    [{ path, element, children: [{ path: subPath, element: children }] }],
-    opts
+export const MemoryRouter: FC<MemoryRouterProps> = ({
+  element,
+  path = Endpoint.ROOT,
+  subElement,
+  subPath = Endpoint.DETAILS,
+}) => {
+  const routes = subElement
+    ? [{ path, element, children: [{ path: subPath, element: subElement }] }]
+    : [{ path, element }];
+  return <RouterProvider router={createMemoryRouter(routes)} />;
+};
+
+export const MemoryRouterWithStore: FC<MemoryRouterProps> = (args) => {
+  return (
+    <StoreProvider>
+      <MemoryRouter {...args} />
+    </StoreProvider>
   );
-  return render(<RouterProvider router={router} />);
 };
