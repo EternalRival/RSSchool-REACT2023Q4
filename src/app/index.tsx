@@ -1,10 +1,9 @@
 import { Demo } from 'features/demo';
 import { ErrorBoundary } from 'features/error-boundary';
 import { FC } from 'react';
-import { Provider } from 'react-redux';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import './index.css';
-import { store } from './redux/store';
+import { StoreProvider } from './redux/store';
 import { routes } from './router';
 
 export const App: FC = () => {
@@ -13,10 +12,10 @@ export const App: FC = () => {
 
   return (
     <ErrorBoundary fallback={errorFallback}>
-      <Provider store={store}>
+      <StoreProvider>
         <RouterProvider router={router} />
         <Demo />
-      </Provider>
+      </StoreProvider>
     </ErrorBoundary>
   );
 };

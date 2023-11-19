@@ -7,9 +7,8 @@ import { ApiShowSummary } from 'shared/api/myshows/types/api-show-summary.type';
 import { GetByIdRequestBody } from 'shared/api/myshows/types/get-by-id-request-body.type';
 import { GetByIdResponseBody } from 'shared/api/myshows/types/get-by-id-response-body.type';
 import { GetRequestBody } from 'shared/api/myshows/types/get-request-body.type';
+import { apiUrl } from 'shared/constants';
 import { Language } from 'shared/types/language.type';
-
-const baseUrl = 'https://api.myshows.me/v2/rpc/';
 
 type GetListByTitleArg = { params: GetRequestBody; lang: Language };
 type GetByIdArg = { params: GetByIdRequestBody; lang: Language };
@@ -29,7 +28,7 @@ const composeFetchArgs = <TRequest>(
 
 export const myShowsApi = createApi({
   reducerPath: 'myShowsApi',
-  baseQuery: fetchBaseQuery({ baseUrl }),
+  baseQuery: fetchBaseQuery({ baseUrl: apiUrl }),
   endpoints: (build) => ({
     getListByTitle: build.query<TVShowListResponse, GetListByTitleArg>({
       query: ({ params, lang }) => {

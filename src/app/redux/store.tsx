@@ -4,8 +4,10 @@ import { detailsFlagsReducer } from './slices/details-flags-slice';
 import { itemsPerPageReducer } from './slices/items-per-page-slice';
 import { listFlagsReducer } from './slices/list-flags-slice';
 import { searchValueReducer } from './slices/search-value-slice';
+import { FC, ReactNode } from 'react';
+import { Provider } from 'react-redux';
 
-export const store = configureStore({
+const store = configureStore({
   reducer: {
     searchValue: searchValueReducer,
     itemsPerPage: itemsPerPageReducer,
@@ -19,6 +21,10 @@ export const store = configureStore({
 
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
+
+export const StoreProvider: FC<{ children: ReactNode }> = ({ children }) => {
+  return <Provider store={store}>{children}</Provider>;
+};
 
 // Search Value        - search submit
 // Items per page

@@ -1,5 +1,7 @@
 export const isEnabledStrictMode = true;
 
+export const apiUrl = 'https://api.myshows.me/v2/rpc/';
+
 export const searchQueryLocalStorageKey = '[ER-23Q4]searchQuery';
 
 export const queryParamName = 'search';

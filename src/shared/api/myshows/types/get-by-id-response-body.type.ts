@@ -35,5 +35,5 @@ export type GetByIdResponseBody = {
   network?: ApiNetwork;
   episodes?: ApiEpisodeSummary[];
   onlineLinks?: ApiOnlineLink[];
-  onlineLinkExclusive?: ApiOnlineLink;
+  onlineLinkExclusive?: ApiOnlineLink | null;
 };

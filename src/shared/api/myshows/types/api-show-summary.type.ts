@@ -10,7 +10,7 @@ export type ApiShowSummary = {
   rating?: number;
   images?: string[];
   image?: string;
-  onlineCount?: number;
-  promoUrl?: string;
+  onlineCount?: number | null;
+  promoUrl?: string | null;
   category?: string;
 };
