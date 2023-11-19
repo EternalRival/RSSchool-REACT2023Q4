@@ -1,5 +1,5 @@
 export type ApiNetwork = {
-  id?: number;
-  title?: string;
-  country?: string;
-};
+  id?: number
+  title?: string
+  country?: string
+}

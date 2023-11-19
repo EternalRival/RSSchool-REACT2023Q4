@@ -1,5 +1,5 @@
-import { ApiShowSummary } from '../../shared/api/myshows/types/api-show-summary.type';
-import { GetResponse } from '../../shared/api/myshows/types/get-response.type';
+import { ApiShowSummary } from '../../shared/api/myshows/types/api-show-summary.type'
+import { GetResponse } from '../../shared/api/myshows/types/get-response.type'
 
 export const mockListJson: [
   GetResponse<number>,
@@ -610,9 +610,9 @@ export const mockListJson: [
     ],
     id: 2,
   },
-];
+]
 
 export const mockList =
-  'result' in mockListJson[1] ? mockListJson[1].result : [];
+  'result' in mockListJson[1] ? mockListJson[1].result : []
 
-export const mockListItem = mockList[0];
+export const mockListItem = mockList[0]

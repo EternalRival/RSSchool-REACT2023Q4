@@ -1,24 +1,24 @@
-import { useGetByIdQuery } from 'app/redux/api/myshows.service';
-import { useAppDispatch } from 'app/redux/hooks';
-import { setDetailsFlags } from 'app/redux/slices/details-flags-slice';
-import { DetailedCard } from 'entities/detailed-card';
-import { Skeleton } from 'features/skeleton';
-import { FC, MouseEventHandler, useEffect } from 'react';
-import { useLocation, useNavigate, useParams } from 'react-router-dom';
-import { Endpoint, defaultLanguage } from 'shared/constants';
-import styles from './detailed-section.module.css';
+import { useGetByIdQuery } from 'app/redux/api/myshows.service'
+import { useAppDispatch } from 'app/redux/hooks'
+import { setDetailsFlags } from 'app/redux/slices/details-flags-slice'
+import { DetailedCard } from 'entities/detailed-card'
+import { Skeleton } from 'features/skeleton'
+import { FC, MouseEventHandler, useEffect } from 'react'
+import { useLocation, useNavigate, useParams } from 'react-router-dom'
+import { Endpoint, defaultLanguage } from 'shared/constants'
+import styles from './detailed-section.module.css'
 
 export const DetailedSection: FC = () => {
-  const { id } = useParams();
-  const location = useLocation();
-  const navigation = useNavigate();
+  const { id } = useParams()
+  const location = useLocation()
+  const navigation = useNavigate()
   if (typeof id === 'undefined') {
-    throw new Error('Wrong query types');
+    throw new Error('Wrong query types')
   }
 
   const handleClose: MouseEventHandler = () => {
-    navigation(`${Endpoint.ROOT}${location.search}`);
-  };
+    navigation(`${Endpoint.ROOT}${location.search}`)
+  }
 
   const {
     currentData,
@@ -30,9 +30,9 @@ export const DetailedSection: FC = () => {
   } = useGetByIdQuery({
     params: { showId: +id, withEpisodes: true },
     lang: defaultLanguage,
-  });
+  })
 
-  const dispatch = useAppDispatch();
+  const dispatch = useAppDispatch()
   useEffect(() => {
     dispatch(
       setDetailsFlags({
@@ -42,13 +42,13 @@ export const DetailedSection: FC = () => {
         isSuccess,
         isUninitialized,
       })
-    );
-  }, [dispatch, isError, isFetching, isLoading, isSuccess, isUninitialized]);
+    )
+  }, [dispatch, isError, isFetching, isLoading, isSuccess, isUninitialized])
 
   return (
     <Skeleton enabled={isFetching}>
       <div className={styles.interceptor} onClick={handleClose} />
       <DetailedCard {...currentData} handleClose={handleClose} />
     </Skeleton>
-  );
-};
+  )
+}

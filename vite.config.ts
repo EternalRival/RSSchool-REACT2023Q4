@@ -1,6 +1,6 @@
-import react from '@vitejs/plugin-react';
-import { resolve } from 'path';
-import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react'
+import { resolve } from 'path'
+import { defineConfig } from 'vite'
 
 const layers = [
   'app',
@@ -10,10 +10,10 @@ const layers = [
   'shared',
   'widgets',
   'tests',
-];
+]
 const aliases = layers.reduce((acc, item) => {
-  return { ...acc, [item]: resolve('src', item) };
-}, {});
+  return { ...acc, [item]: resolve('src', item) }
+}, {})
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -31,4 +31,4 @@ export default defineConfig({
     setupFiles: './src/tests/vitest-setup.ts',
     teardownTimeout: 5000,
   },
-});
+})

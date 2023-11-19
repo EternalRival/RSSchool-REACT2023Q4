@@ -1,7 +1,7 @@
-import { render, screen } from '@testing-library/react';
-import { mockDetails } from 'tests/mock/mock-details-response';
-import { describe, expect, it, vi } from 'vitest';
-import { DetailedCard } from '.';
+import { render, screen } from '@testing-library/react'
+import { mockDetails } from 'tests/mock/mock-details-response'
+import { describe, expect, it, vi } from 'vitest'
+import { DetailedCard } from '.'
 
 describe('Detailed Card', () => {
   it('Make sure the detailed card component correctly displays the detailed card data', async () => {
@@ -19,25 +19,22 @@ describe('Detailed Card', () => {
       mockDetails.imdbRating,
       mockDetails.kinopoiskRating,
       mockDetails.rating,
-    ];
-    const detailsInnerHtmlList = [
-      mockDetails.imdbUrl,
-      mockDetails.kinopoiskUrl,
-    ];
+    ]
+    const detailsInnerHtmlList = [mockDetails.imdbUrl, mockDetails.kinopoiskUrl]
 
-    render(<DetailedCard {...mockDetails} handleClose={vi.fn()} />);
+    render(<DetailedCard {...mockDetails} handleClose={vi.fn()} />)
 
-    const detailedCard = await screen.findByRole('complementary');
+    const detailedCard = await screen.findByRole('complementary')
 
     detailsTextContentList.forEach((detail) => {
       if (typeof detail !== 'undefined') {
-        expect(detailedCard).toHaveTextContent(detail.toString());
+        expect(detailedCard).toHaveTextContent(detail.toString())
       }
-    });
+    })
     detailsInnerHtmlList.forEach((detail) => {
       if (typeof detail !== 'undefined') {
-        expect(detailedCard).toContainHTML(detail);
+        expect(detailedCard).toContainHTML(detail)
       }
-    });
-  });
-});
+    })
+  })
+})

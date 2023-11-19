@@ -1,9 +1,9 @@
-import { FC, ReactEventHandler } from 'react';
-import { NavLink, useLocation } from 'react-router-dom';
-import { Endpoint } from 'shared/constants';
-import styles from './card.module.css';
-import { CardProps } from './model/card.type';
-import cardImagePlaceholderSrc from './ui/card-image-placeholder.webp';
+import { FC, ReactEventHandler } from 'react'
+import { NavLink, useLocation } from 'react-router-dom'
+import { Endpoint } from 'shared/constants'
+import styles from './card.module.css'
+import { CardProps } from './model/card.type'
+import cardImagePlaceholderSrc from './ui/card-image-placeholder.webp'
 
 const getStyledStatus = (status = ''): { style: string; text: string } => {
   const dict: Record<string, { style: string; text: string }> = {
@@ -11,9 +11,9 @@ const getStyledStatus = (status = ''): { style: string; text: string } => {
     'Returning Series': { style: styles.onAir, text: 'On Air' },
     'TBD/On The Bubble': { style: styles.pause, text: 'Paused' },
     'New Series': { style: styles.new, text: 'New' },
-  } as const;
-  return dict[status];
-};
+  } as const
+  return dict[status]
+}
 
 export const Card: FC<CardProps> = ({
   id,
@@ -24,24 +24,24 @@ export const Card: FC<CardProps> = ({
   totalSeasons,
   rating,
 }) => {
-  const location = useLocation();
+  const location = useLocation()
 
-  const styledStatusData = getStyledStatus(status);
+  const styledStatusData = getStyledStatus(status)
   const styledStatus = styledStatusData && (
     <span className={styledStatusData.style}>{styledStatusData.text}</span>
-  );
+  )
 
   const handleImageError: ReactEventHandler = (e) => {
     if (e.target instanceof HTMLImageElement) {
-      e.target.src = cardImagePlaceholderSrc;
+      e.target.src = cardImagePlaceholderSrc
     }
-  };
+  }
 
   return (
     <NavLink
       to={`${Endpoint.DETAILS}${id}${location.search}`}
       className={({ isActive }): string => {
-        return styles.navLink + (isActive ? ` ${styles.active}` : '');
+        return styles.navLink + (isActive ? ` ${styles.active}` : '')
       }}
     >
       <h2 className={styles.cardHeading}>{title}</h2>
@@ -63,5 +63,5 @@ export const Card: FC<CardProps> = ({
         Seasons: {totalSeasons}
       </p>
     </NavLink>
-  );
-};
+  )
+}

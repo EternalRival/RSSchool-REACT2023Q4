@@ -2,17 +2,17 @@ import {
   FetchArgs,
   createApi,
   fetchBaseQuery,
-} from '@reduxjs/toolkit/query/react';
-import { ApiShowSummary } from 'shared/api/myshows/types/api-show-summary.type';
-import { GetByIdRequestBody } from 'shared/api/myshows/types/get-by-id-request-body.type';
-import { GetByIdResponseBody } from 'shared/api/myshows/types/get-by-id-response-body.type';
-import { GetRequestBody } from 'shared/api/myshows/types/get-request-body.type';
-import { apiUrl } from 'shared/constants';
-import { Language } from 'shared/types/language.type';
+} from '@reduxjs/toolkit/query/react'
+import { ApiShowSummary } from 'shared/api/myshows/types/api-show-summary.type'
+import { GetByIdRequestBody } from 'shared/api/myshows/types/get-by-id-request-body.type'
+import { GetByIdResponseBody } from 'shared/api/myshows/types/get-by-id-response-body.type'
+import { GetRequestBody } from 'shared/api/myshows/types/get-request-body.type'
+import { apiUrl } from 'shared/constants'
+import { Language } from 'shared/types/language.type'
 
-type GetListByTitleArg = { params: GetRequestBody; lang: Language };
-type GetByIdArg = { params: GetByIdRequestBody; lang: Language };
-type TVShowListResponse = { count: number; list: ApiShowSummary[] };
+type GetListByTitleArg = { params: GetRequestBody; lang: Language }
+type GetByIdArg = { params: GetByIdRequestBody; lang: Language }
+type TVShowListResponse = { count: number; list: ApiShowSummary[] }
 
 const composeFetchArgs = <TRequest>(
   body: TRequest,
@@ -23,8 +23,8 @@ const composeFetchArgs = <TRequest>(
     method: 'POST',
     headers: { 'Content-Type': 'application/json', 'Accept-Language': lang },
     body,
-  };
-};
+  }
+}
 
 export const myShowsApi = createApi({
   reducerPath: 'myShowsApi',
@@ -37,8 +37,8 @@ export const myShowsApi = createApi({
           method: `shows.${method}`,
           params,
           id: i,
-        }));
-        return composeFetchArgs(body, lang);
+        }))
+        return composeFetchArgs(body, lang)
       },
       transformResponse: ([countArgs, listArgs]) => ({
         count: countArgs.result,
@@ -53,12 +53,12 @@ export const myShowsApi = createApi({
           method: `shows.GetById`,
           params,
           id: 0,
-        };
-        return composeFetchArgs(body, lang);
+        }
+        return composeFetchArgs(body, lang)
       },
       transformResponse: ({ result }) => result,
     }),
   }),
-});
+})
 
-export const { useGetListByTitleQuery, useGetByIdQuery } = myShowsApi;
+export const { useGetListByTitleQuery, useGetByIdQuery } = myShowsApi

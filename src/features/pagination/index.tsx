@@ -1,16 +1,16 @@
-import { FC } from 'react';
-import { Form } from 'react-router-dom';
-import styles from './pagination.module.css';
+import { FC } from 'react'
+import { Form } from 'react-router-dom'
+import styles from './pagination.module.css'
 
 type PaginationProps = {
-  count: number;
-  pageSizeOptions: number[];
-  page: number;
-  pageSize: number;
-  defaultPageSize: number;
-  setPage: (value: number) => void;
-  setPageSize: (value: number) => void;
-};
+  count: number
+  pageSizeOptions: number[]
+  page: number
+  pageSize: number
+  defaultPageSize: number
+  setPage: (value: number) => void
+  setPageSize: (value: number) => void
+}
 
 export const Pagination: FC<PaginationProps> = ({
   count,
@@ -21,16 +21,16 @@ export const Pagination: FC<PaginationProps> = ({
   setPage,
   setPageSize,
 }) => {
-  const currentPage = Math.max(1, page);
+  const currentPage = Math.max(1, page)
   const currentPageSize = pageSizeOptions.includes(pageSize)
     ? pageSize
-    : defaultPageSize;
+    : defaultPageSize
 
-  const [min, max] = [1, Math.ceil(count / currentPageSize)];
+  const [min, max] = [1, Math.ceil(count / currentPageSize)]
   const [prevPage, nextPage] = [
     Math.max(min, currentPage - 1),
     Math.min(currentPage + 1, max),
-  ];
+  ]
 
   return (
     <Form className={styles.container}>
@@ -65,5 +65,5 @@ export const Pagination: FC<PaginationProps> = ({
         ))}
       </select>
     </Form>
-  );
-};
+  )
+}

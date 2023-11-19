@@ -1,5 +1,5 @@
-import { GetByIdResponseBody } from '../../shared/api/myshows/types/get-by-id-response-body.type';
-import { GetResponse } from '../../shared/api/myshows/types/get-response.type';
+import { GetByIdResponseBody } from '../../shared/api/myshows/types/get-by-id-response-body.type'
+import { GetResponse } from '../../shared/api/myshows/types/get-response.type'
 
 export const mockDetailsJson: GetResponse<GetByIdResponseBody> = {
   jsonrpc: '2.0',
@@ -322,7 +322,7 @@ export const mockDetailsJson: GetResponse<GetByIdResponseBody> = {
     onlineLinkExclusive: null,
   },
   id: 1,
-};
+}
 
 export const mockDetails =
-  'result' in mockDetailsJson ? mockDetailsJson.result : {};
+  'result' in mockDetailsJson ? mockDetailsJson.result : {}

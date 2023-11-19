@@ -1,6 +1,6 @@
-import { ReactNode } from 'react';
+import { ReactNode } from 'react'
 
 export type SkeletonProps = {
-  enabled: boolean;
-  children: ReactNode;
-};
+  enabled: boolean
+  children: ReactNode
+}

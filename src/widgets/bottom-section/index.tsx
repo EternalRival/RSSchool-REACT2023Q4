@@ -1,27 +1,27 @@
-import { useGetListByTitleQuery } from 'app/redux/api/myshows.service';
-import { useAppDispatch, useAppSelector } from 'app/redux/hooks';
-import { setItemsPerPage } from 'app/redux/slices/items-per-page-slice';
-import { setListFlags } from 'app/redux/slices/list-flags-slice';
-import { CardList } from 'features/card-list';
-import { Pagination } from 'features/pagination';
-import { Skeleton } from 'features/skeleton';
-import { FC, useEffect } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useGetListByTitleQuery } from 'app/redux/api/myshows.service'
+import { useAppDispatch, useAppSelector } from 'app/redux/hooks'
+import { setItemsPerPage } from 'app/redux/slices/items-per-page-slice'
+import { setListFlags } from 'app/redux/slices/list-flags-slice'
+import { CardList } from 'features/card-list'
+import { Pagination } from 'features/pagination'
+import { Skeleton } from 'features/skeleton'
+import { FC, useEffect } from 'react'
+import { useSearchParams } from 'react-router-dom'
 import {
   defaultLanguage,
   defaultPageSizeValue,
   defaultPageValue,
   pageParamName,
-} from 'shared/constants';
-import styles from './bottom-section.module.css';
+} from 'shared/constants'
+import styles from './bottom-section.module.css'
 
 export const BottomSection: FC = () => {
-  const [searchParams, setSearchParams] = useSearchParams();
-  const searchValue = useAppSelector(({ searchValue }) => searchValue.value);
-  const pageSize = useAppSelector(({ itemsPerPage }) => itemsPerPage.value);
-  const dispatch = useAppDispatch();
+  const [searchParams, setSearchParams] = useSearchParams()
+  const searchValue = useAppSelector(({ searchValue }) => searchValue.value)
+  const pageSize = useAppSelector(({ itemsPerPage }) => itemsPerPage.value)
+  const dispatch = useAppDispatch()
 
-  const page = +(searchParams.get(pageParamName) ?? defaultPageValue);
+  const page = +(searchParams.get(pageParamName) ?? defaultPageValue)
 
   const {
     currentData,
@@ -37,9 +37,9 @@ export const BottomSection: FC = () => {
       pageSize,
     },
     lang: defaultLanguage,
-  });
-  const list = currentData?.list ?? [];
-  const count = currentData?.count ?? 0;
+  })
+  const list = currentData?.list ?? []
+  const count = currentData?.count ?? 0
 
   useEffect(() => {
     dispatch(
@@ -50,8 +50,8 @@ export const BottomSection: FC = () => {
         isSuccess,
         isUninitialized,
       })
-    );
-  }, [dispatch, isError, isFetching, isLoading, isSuccess, isUninitialized]);
+    )
+  }, [dispatch, isError, isFetching, isLoading, isSuccess, isUninitialized])
 
   return (
     <Skeleton enabled={isFetching}>
@@ -69,17 +69,17 @@ export const BottomSection: FC = () => {
             setSearchParams((prev) => ({
               ...Object.fromEntries(prev.entries()),
               [pageParamName]: value.toString(),
-            }));
+            }))
           }}
           setPageSize={(value) => {
             setSearchParams((prev) => ({
               ...Object.fromEntries(prev.entries()),
               [pageParamName]: defaultPageValue.toString(),
-            }));
-            dispatch(setItemsPerPage(value));
+            }))
+            dispatch(setItemsPerPage(value))
           }}
         />
       </div>
     </Skeleton>
-  );
-};
+  )
+}

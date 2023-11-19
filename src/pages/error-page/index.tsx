@@ -1,14 +1,14 @@
-import { isRouteErrorResponse, useRouteError } from 'react-router-dom';
-import styles from './error-page.module.css';
-import { FC } from 'react';
+import { isRouteErrorResponse, useRouteError } from 'react-router-dom'
+import styles from './error-page.module.css'
+import { FC } from 'react'
 
 export const ErrorMessage: FC<{ error: unknown }> = ({ error }) => {
   if (!error) {
-    return null;
+    return null
   }
 
   if (isRouteErrorResponse(error)) {
-    console.error(error);
+    console.error(error)
     return (
       <>
         <p className={styles.status}>
@@ -16,16 +16,16 @@ export const ErrorMessage: FC<{ error: unknown }> = ({ error }) => {
         </p>
         <p>{error.data}</p>
       </>
-    );
+    )
   }
 
   if (error instanceof Error) {
-    return <p>{error.message}</p>;
+    return <p>{error.message}</p>
   }
-};
+}
 
 export const ErrorPage: FC = () => {
-  const error = useRouteError();
+  const error = useRouteError()
 
   return (
     <div className={styles.errorPage}>
@@ -33,5 +33,5 @@ export const ErrorPage: FC = () => {
       <h2>Oops... Something went wrong ((</h2>
       <ErrorMessage error={error} />
     </div>
-  );
-};
+  )
+}

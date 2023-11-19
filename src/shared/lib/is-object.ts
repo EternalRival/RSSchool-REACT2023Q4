@@ -1,3 +1,3 @@
 export const isObject = (arg: unknown): arg is Record<string, unknown> => {
-  return arg !== null && typeof arg === 'object';
-};
+  return arg !== null && typeof arg === 'object'
+}

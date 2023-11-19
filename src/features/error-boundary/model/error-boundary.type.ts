@@ -1,9 +1,9 @@
-import { ReactNode } from 'react';
+import { ReactNode } from 'react'
 
 export type ErrorBoundaryProps = {
-  fallback: ReactNode;
-  children: ReactNode;
-};
+  fallback: ReactNode
+  children: ReactNode
+}
 export type ErrorBoundaryState = {
-  hasError: boolean;
-};
+  hasError: boolean
+}

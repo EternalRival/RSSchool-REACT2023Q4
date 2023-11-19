@@ -1,8 +1,8 @@
-import { GetByIdRequestBody } from './get-by-id-request-body.type';
+import { GetByIdRequestBody } from './get-by-id-request-body.type'
 
 export type GetByIdRequest = {
-  jsonrpc: string;
-  method: string;
-  params: GetByIdRequestBody;
-  id: number;
-};
+  jsonrpc: string
+  method: string
+  params: GetByIdRequestBody
+  id: number
+}

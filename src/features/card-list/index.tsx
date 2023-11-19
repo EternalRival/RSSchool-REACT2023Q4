@@ -1,12 +1,12 @@
-import { Card } from 'entities/card';
-import { FC } from 'react';
-import { ApiShowSummary } from 'shared/api/myshows/types/api-show-summary.type';
-import { noResultsMessage } from 'shared/constants';
-import styles from './card-list.module.css';
+import { Card } from 'entities/card'
+import { FC } from 'react'
+import { ApiShowSummary } from 'shared/api/myshows/types/api-show-summary.type'
+import { noResultsMessage } from 'shared/constants'
+import styles from './card-list.module.css'
 
 export const CardList: FC<{ list: ApiShowSummary[] }> = ({ list }) => {
   if (list.length <= 0) {
-    return <p>{noResultsMessage}</p>;
+    return <p>{noResultsMessage}</p>
   }
 
   return (
@@ -25,5 +25,5 @@ export const CardList: FC<{ list: ApiShowSummary[] }> = ({ list }) => {
         </li>
       ))}
     </ul>
-  );
-};
+  )
+}

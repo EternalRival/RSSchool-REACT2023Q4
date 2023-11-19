@@ -1,19 +1,19 @@
-import { FC, useState } from 'react';
-import errorAlertIconSrc from './ui/error-button-icon.svg';
-import styles from './error-throwing-button.module.css';
+import { FC, useState } from 'react'
+import errorAlertIconSrc from './ui/error-button-icon.svg'
+import styles from './error-throwing-button.module.css'
 
 export const ErrorThrowingButton: FC = () => {
-  const [errorTriggered, setErrorTriggered] = useState(false);
+  const [errorTriggered, setErrorTriggered] = useState(false)
 
   if (errorTriggered) {
-    throw new Error('Oops! Something gone wrong >_<');
+    throw new Error('Oops! Something gone wrong >_<')
   }
 
   return (
     <button
       className={styles.fab}
       onClick={(): void => {
-        setErrorTriggered(true);
+        setErrorTriggered(true)
       }}
     >
       <img
@@ -23,5 +23,5 @@ export const ErrorThrowingButton: FC = () => {
         height={24}
       />
     </button>
-  );
-};
+  )
+}

@@ -1,4 +1,4 @@
 export type GetByIdRequestBody = {
-  showId: number;
-  withEpisodes?: boolean;
-};
+  showId: number
+  withEpisodes?: boolean
+}

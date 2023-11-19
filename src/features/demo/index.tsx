@@ -1,15 +1,15 @@
-import { useAppSelector } from 'app/redux/hooks';
-import { FC } from 'react';
-import styles from './demo.module.css';
+import { useAppSelector } from 'app/redux/hooks'
+import { FC } from 'react'
+import styles from './demo.module.css'
 
 export const Demo: FC = () => {
   type Flags = {
-    isFetching: boolean;
-    isUninitialized: boolean;
-    isError: boolean;
-    isLoading: boolean;
-    isSuccess: boolean;
-  };
+    isFetching: boolean
+    isUninitialized: boolean
+    isError: boolean
+    isLoading: boolean
+    isSuccess: boolean
+  }
   const parseFlags = ({
     isFetching,
     isUninitialized,
@@ -23,14 +23,14 @@ export const Demo: FC = () => {
       `E:${+isError}`,
       `L:${+isLoading}`,
       `S:${+isSuccess}`,
-    ].join(' | ');
-  };
+    ].join(' | ')
+  }
   const detailsFlags = useAppSelector(({ detailsFlags }) =>
     parseFlags(detailsFlags)
-  );
-  const listFlags = useAppSelector(({ listFlags }) => parseFlags(listFlags));
-  const itemsPerPage = useAppSelector((state) => state.itemsPerPage.value);
-  const searchValue = useAppSelector((state) => state.searchValue.value);
+  )
+  const listFlags = useAppSelector(({ listFlags }) => parseFlags(listFlags))
+  const itemsPerPage = useAppSelector((state) => state.itemsPerPage.value)
+  const searchValue = useAppSelector((state) => state.searchValue.value)
 
   return (
     <dl className={styles.demo}>
@@ -43,5 +43,5 @@ export const Demo: FC = () => {
       <dt>SearchValue</dt>
       <dd>{JSON.stringify(searchValue)}</dd>
     </dl>
-  );
-};
+  )
+}

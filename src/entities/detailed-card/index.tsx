@@ -1,9 +1,9 @@
-import { FC, MouseEventHandler } from 'react';
-import { GetByIdResponseBody } from 'shared/api/myshows/types/get-by-id-response-body.type';
-import { defaultLanguage } from 'shared/constants';
-import styles from './detailed-card.module.css';
-import { DetailType } from './model/detailed-card.type';
-import closeIconSrc from './ui/close-icon.svg';
+import { FC, MouseEventHandler } from 'react'
+import { GetByIdResponseBody } from 'shared/api/myshows/types/get-by-id-response-body.type'
+import { defaultLanguage } from 'shared/constants'
+import styles from './detailed-card.module.css'
+import { DetailType } from './model/detailed-card.type'
+import closeIconSrc from './ui/close-icon.svg'
 
 const Detail: FC<DetailType> = ({ title, value, secondaryValue, href }) => {
   if (value) {
@@ -21,9 +21,9 @@ const Detail: FC<DetailType> = ({ title, value, secondaryValue, href }) => {
           {secondaryValue && secondaryValue !== value && ` (${secondaryValue})`}
         </dd>
       </>
-    );
+    )
   }
-};
+}
 
 export const DetailedCard: FC<
   GetByIdResponseBody & { handleClose: MouseEventHandler }
@@ -92,5 +92,5 @@ export const DetailedCard: FC<
         />
       </dl>
     </aside>
-  );
-};
+  )
+}
