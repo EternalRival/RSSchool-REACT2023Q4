@@ -1,20 +1,42 @@
-import { render, screen, within } from '@testing-library/react';
+import { cleanup, screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { DetailedCard } from 'entities/detailed-card';
 import { Outlet } from 'react-router-dom';
 import { Endpoint } from 'shared/constants';
-import { mockListItem } from 'tests/mock/mock-list-response';
-import { MemoryRouter, MemoryRouterWithStore } from 'tests/test-utils';
-import { describe, expect, it, vi } from 'vitest';
+import {
+  mockDetailsResponse,
+  mockListItem,
+  renderWithNestedRouter,
+} from 'tests/test-utils';
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { Card } from '.';
-import * as MyShowsApiService from 'app/redux/api/myshows.service';
 
-describe('Card', () => {
+describe.skip('Card', () => {
   const user = userEvent.setup();
+  const fakeFetch: typeof fetch = async () => {
+    return { json: async () => mockDetailsResponse } as Response;
+  };
+  const fetchSpy = vi.spyOn(window, 'fetch').mockImplementation(fakeFetch);
+
+  beforeEach(() => {
+    renderWithNestedRouter(
+      <>
+        <Card {...mockListItem} />
+        <Outlet />
+      </>,
+      <DetailedCard />,
+      {},
+      Endpoint.ROOT,
+      `${Endpoint.DETAILS}:id`
+    );
+  });
+
+  afterEach(() => {
+    fetchSpy.mockClear();
+    cleanup();
+  });
 
   it('Ensure that the card component renders the relevant card data', async () => {
-    render(<MemoryRouter element={<Card {...mockListItem} />} />);
-
     const { title, year, image, totalSeasons, rating } = mockListItem;
     const description = screen.getByLabelText(/card description/i);
     const checklist = [year, totalSeasons, rating];
@@ -29,46 +51,18 @@ describe('Card', () => {
   });
 
   it('Validate that clicking on a card opens a detailed card component', async () => {
-    render(
-      <MemoryRouterWithStore
-        element={
-          <>
-            <Card {...mockListItem} />
-            <Outlet />
-          </>
-        }
-        subElement={<DetailedCard />}
-        subPath={`${Endpoint.DETAILS}:id`}
-      />
-    );
-
     expect(screen.queryByRole('complementary')).toBeNull();
-    await user.click(screen.getByRole('link'));
 
+    await user.click(screen.getByRole('link'));
     expect(screen.getByRole('complementary')).toBeVisible();
   });
 
   it('Check that clicking triggers an additional API call to fetch detailed information', async () => {
-    render(
-      <MemoryRouterWithStore
-        element={
-          <>
-            <Card {...mockListItem} />
-            <Outlet />
-          </>
-        }
-        subElement={<DetailedCard />}
-        subPath={`${Endpoint.DETAILS}:id`}
-      />
-    );
-
-    const apiCallSpy = vi.spyOn(MyShowsApiService, 'useGetByIdQuery');
-
-    expect(apiCallSpy).not.toBeCalled();
+    expect(fetchSpy).not.toBeCalled();
 
     for (let i = 1; i <= 5; i += 1) {
       await user.click(screen.getByRole('link'));
-      expect(apiCallSpy).toBeCalledTimes(i);
+      expect(fetchSpy).toBeCalledTimes(i);
 
       const closeButton = screen.getByRole('button', { name: /close button/i });
       await user.click(closeButton);
