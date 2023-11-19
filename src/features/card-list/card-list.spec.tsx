@@ -1,38 +1,20 @@
-/* import { noResultsMessage } from 'shared/constants';
-import {
-  MockContextProvider,
-  mockListResponse,
-  renderWithRouter,
-} from 'tests/test-utils';
-import { afterEach, describe, expect, it } from 'vitest';
+import { render, screen } from '@testing-library/react';
+import { noResultsMessage } from 'shared/constants';
+import { mockList } from 'tests/mock/mock-list-response';
+import { MemoryRouter } from 'tests/test-utils';
+import { describe, expect, it } from 'vitest';
 import { CardList } from '.';
-import { cleanup, render, screen } from '@testing-library/react';
 
 describe('Card List', () => {
-  afterEach(() => {
-    cleanup();
-  });
-
   it('Verify that the component renders the specified number of cards', () => {
-    const expected = mockListResponse.list.length;
+    render(<MemoryRouter element={<CardList list={mockList} />} />);
 
-    renderWithRouter(
-      <MockContextProvider fetchedListData={mockListResponse}>
-        <CardList />
-      </MockContextProvider>
-    );
-
-    expect(screen.getByRole('list').childElementCount).toBe(expected);
+    expect(screen.getByRole('list').childElementCount).toBe(mockList.length);
   });
 
   it('Check that an appropriate message is displayed if no cards are present', () => {
-    render(
-      <MockContextProvider>
-        <CardList />
-      </MockContextProvider>
-    );
+    render(<MemoryRouter element={<CardList list={[]} />} />);
 
     expect(screen.getByText(noResultsMessage, { exact: false })).toBeVisible();
   });
 });
- */
