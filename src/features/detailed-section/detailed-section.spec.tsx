@@ -14,7 +14,10 @@ describe('Detailed Card (section)', () => {
   });
 
   beforeEach(() => {
-    vi.useFakeTimers({ shouldAdvanceTime: true });
+    vi.useFakeTimers({
+      shouldAdvanceTime: true,
+      shouldClearNativeTimers: true,
+    });
     render(
       <MemoryRouterWithStore
         element={
@@ -30,7 +33,7 @@ describe('Detailed Card (section)', () => {
     );
   });
   afterEach(() => {
-    vi.runOnlyPendingTimers();
+    vi.runAllTimers();
     vi.useRealTimers();
   });
 
