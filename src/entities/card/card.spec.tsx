@@ -45,7 +45,7 @@ describe('Card', () => {
     expect(screen.queryByRole('complementary')).toBeNull()
     await user.click(screen.getByRole('link'))
 
-    expect(screen.getByRole('complementary')).toBeVisible()
+    expect(await screen.findByRole('complementary')).toBeVisible()
   })
 
   it('Check that clicking triggers an additional API call to fetch detailed information', async () => {
