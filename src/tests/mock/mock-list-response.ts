@@ -1,10 +1,7 @@
 import { ApiShowSummary } from '@shared/api/myshows/types/api-show-summary.type'
 import { GetResponse } from '@shared/api/myshows/types/get-response.type'
 
-export const mockListJson: [
-  GetResponse<number>,
-  GetResponse<ApiShowSummary[]>,
-] = [
+export const mockListJson: [GetResponse<number>, GetResponse<ApiShowSummary[]>] = [
   {
     jsonrpc: '2.0',
     result: 66068,
@@ -30,8 +27,7 @@ export const mockListJson: [
           'b515afd004b8a71dc47520d330dfd453.jpg',
           '076a546fa74e98b80c3635a5a3975dff.jpg',
         ],
-        image:
-          'https://media.myshows.me/shows/small/9/49/9492ce09d3a31c32ba559f5936dac888.jpg',
+        image: 'https://media.myshows.me/shows/small/9/49/9492ce09d3a31c32ba559f5936dac888.jpg',
         onlineCount: null,
         promoUrl: null,
         category: 'show',
@@ -47,8 +43,7 @@ export const mockListJson: [
         voted: 197720,
         rating: 4.66,
         images: ['dd10e6a042a3766f7c3173a1397dcd0d.jpg'],
-        image:
-          'https://media.myshows.me/shows/small/d/d1/dd10e6a042a3766f7c3173a1397dcd0d.jpg',
+        image: 'https://media.myshows.me/shows/small/d/d1/dd10e6a042a3766f7c3173a1397dcd0d.jpg',
         onlineCount: null,
         promoUrl:
           'https://www.kinopoisk.ru/film/464963/watch/?utm_source=myshows\u0026utm_medium=paid_performance\u0026utm_campaign=got8_new\u0026utm_content=main_page_popular_promo\u0026utm_term=un_registered\u0026source=kinopoisk_paid_performance_myshows_got8_new_main_page_popular_promo_un_registered\u0026erid=4CQwVszH9pHnuvjy7wZ',
@@ -65,8 +60,7 @@ export const mockListJson: [
         voted: 158739,
         rating: 4.5,
         images: ['2a93287bc53bbfc4467095edbc9088cc.jpg'],
-        image:
-          'https://media.myshows.me/shows/small/2/a9/2a93287bc53bbfc4467095edbc9088cc.jpg',
+        image: 'https://media.myshows.me/shows/small/2/a9/2a93287bc53bbfc4467095edbc9088cc.jpg',
         onlineCount: null,
         promoUrl: null,
         category: 'show',
@@ -82,8 +76,7 @@ export const mockListJson: [
         voted: 148394,
         rating: 4.27,
         images: ['fc37c340d1d6e0f4ba1860efa6635ab6.jpg'],
-        image:
-          'https://media.myshows.me/shows/small/f/c3/fc37c340d1d6e0f4ba1860efa6635ab6.jpg',
+        image: 'https://media.myshows.me/shows/small/f/c3/fc37c340d1d6e0f4ba1860efa6635ab6.jpg',
         onlineCount: null,
         promoUrl:
           'https://hd.kinopoisk.ru/film/4901b2e6dc7be0eda7432eedca82a783?season=15\u0026episode=1\u0026utm_source=myshows\u0026utm_medium=paid_performance\u0026utm_campaign=supernatural\u0026utm_content=main_page_popular_promo\u0026utm_term=un_registered\u0026source=kinopoisk_paid_performance_myshows_supernatural_main_page_popular_promo_un_registered\u0026erid=4CQwVszH9pKzQ8iyFrw',
@@ -106,8 +99,7 @@ export const mockListJson: [
           '4a9ba4c8321d42fb5be6bc52a7f6e310.jpg',
           'c04ca80f963623168f87d7e3c2531fa2.jpg',
         ],
-        image:
-          'https://media.myshows.me/shows/small/1/23/123145dc590e00e6c762a53f0b54983b.jpg',
+        image: 'https://media.myshows.me/shows/small/1/23/123145dc590e00e6c762a53f0b54983b.jpg',
         onlineCount: null,
         promoUrl: null,
         category: 'show',
@@ -123,8 +115,7 @@ export const mockListJson: [
         voted: 138603,
         rating: 4.56,
         images: ['0c29613f893decccc881252ef9ad6f33.jpg'],
-        image:
-          'https://media.myshows.me/shows/small/0/c2/0c29613f893decccc881252ef9ad6f33.jpg',
+        image: 'https://media.myshows.me/shows/small/0/c2/0c29613f893decccc881252ef9ad6f33.jpg',
         onlineCount: null,
         promoUrl: null,
         category: 'show',
@@ -146,8 +137,7 @@ export const mockListJson: [
           'd1cae1cb927d65d2aa417d02a4759faf.jpg',
           '83ae9d71a4fe2d2797f1c82c3d3e23b0.jpg',
         ],
-        image:
-          'https://media.myshows.me/shows/small/7/49/749eec18eb58e856bdea8e19833d2fa1.jpg',
+        image: 'https://media.myshows.me/shows/small/7/49/749eec18eb58e856bdea8e19833d2fa1.jpg',
         onlineCount: null,
         promoUrl: null,
         category: 'show',
@@ -169,8 +159,7 @@ export const mockListJson: [
           '3b04ba7b76c55f877cfa3a303d7e2577.jpg',
           '84f4aae4bbdb17ccd3168ae65ff35de4.jpg',
         ],
-        image:
-          'https://media.myshows.me/shows/small/0/73/073db039e64c1d43e75b9f69952b661a.jpg',
+        image: 'https://media.myshows.me/shows/small/0/73/073db039e64c1d43e75b9f69952b661a.jpg',
         onlineCount: null,
         promoUrl: null,
         category: 'show',
@@ -186,8 +175,7 @@ export const mockListJson: [
         voted: 114687,
         rating: 4.17,
         images: ['5a151b3a165235cd37444f0f0757e27b.jpg'],
-        image:
-          'https://media.myshows.me/shows/small/5/a1/5a151b3a165235cd37444f0f0757e27b.jpg',
+        image: 'https://media.myshows.me/shows/small/5/a1/5a151b3a165235cd37444f0f0757e27b.jpg',
         onlineCount: null,
         promoUrl: null,
         category: 'show',
@@ -203,8 +191,7 @@ export const mockListJson: [
         voted: 114704,
         rating: 4.12,
         images: ['4547889b9ebd60520e677044042f7ba3.jpg'],
-        image:
-          'https://media.myshows.me/shows/small/4/54/4547889b9ebd60520e677044042f7ba3.jpg',
+        image: 'https://media.myshows.me/shows/small/4/54/4547889b9ebd60520e677044042f7ba3.jpg',
         onlineCount: null,
         promoUrl:
           'https://hd.kinopoisk.ru/film/41e866c577c74a4cb43cee67e33ee175?utm_source=myshows\u0026utm_medium=paid_performance\u0026utm_campaign=the_walking_dead\u0026utm_content=main_page_popular_promo\u0026utm_term=un_registered\u0026source=kinopoisk_paid_performance_myshows_the_walking_dead_main_page_popular_promo_un_registered\u0026erid=4CQwVszH9pN9t8oSkFH',
@@ -221,8 +208,7 @@ export const mockListJson: [
         voted: 103693,
         rating: 4.59,
         images: ['915b56d169568a7431e671770d426f60.jpg'],
-        image:
-          'https://media.myshows.me/shows/small/9/15/915b56d169568a7431e671770d426f60.jpg',
+        image: 'https://media.myshows.me/shows/small/9/15/915b56d169568a7431e671770d426f60.jpg',
         onlineCount: null,
         promoUrl: null,
         category: 'show',
@@ -244,8 +230,7 @@ export const mockListJson: [
           '75b5f50cb35a71e668ec32bbe14975d2.jpg',
           '7387ba705a855b0c68708d72607210e6.jpg',
         ],
-        image:
-          'https://media.myshows.me/shows/small/8/7f/87fc3bfbf6f569ece9966a9913c0a502.jpg',
+        image: 'https://media.myshows.me/shows/small/8/7f/87fc3bfbf6f569ece9966a9913c0a502.jpg',
         onlineCount: null,
         promoUrl: null,
         category: 'show',
@@ -261,8 +246,7 @@ export const mockListJson: [
         voted: 92447,
         rating: 4.5,
         images: ['43d8990d7bf50bb21da691f9ddafd509.jpg'],
-        image:
-          'https://media.myshows.me/shows/small/4/3d/43d8990d7bf50bb21da691f9ddafd509.jpg',
+        image: 'https://media.myshows.me/shows/small/4/3d/43d8990d7bf50bb21da691f9ddafd509.jpg',
         onlineCount: null,
         promoUrl: null,
         category: 'show',
@@ -284,8 +268,7 @@ export const mockListJson: [
           'e21f42929b919cffc7d68b1c21f72cb2.jpg',
           '12a5d8aa550f55de4c7e9e79f91c7bfc.jpg',
         ],
-        image:
-          'https://media.myshows.me/shows/small/3/90/3902fe3a363a08eb23b02d0743a2461d.jpg',
+        image: 'https://media.myshows.me/shows/small/3/90/3902fe3a363a08eb23b02d0743a2461d.jpg',
         onlineCount: null,
         promoUrl:
           'https://www.kinopoisk.ru/film/77044/watch/?utm_source=myshows\u0026utm_medium=paid_performance\u0026utm_campaign=friends\u0026utm_content=main_page_popular_promo\u0026utm_term=un_registered\u0026source=kinopoisk_paid_performance_myshows_friends_main_page_popular_promo_un_registered',
@@ -308,8 +291,7 @@ export const mockListJson: [
           '5e318959b918536f8d65ae9077aa5f56.jpg',
           'b2303fe99730586a510a36adcdd6941f.jpg',
         ],
-        image:
-          'https://media.myshows.me/shows/small/8/20/820cfc454b115f23cb9b6a0fb8cd8549.jpg',
+        image: 'https://media.myshows.me/shows/small/8/20/820cfc454b115f23cb9b6a0fb8cd8549.jpg',
         onlineCount: null,
         promoUrl: null,
         category: 'show',
@@ -331,8 +313,7 @@ export const mockListJson: [
           '0959604f4ce4e7e8d312b8ef84b57084.jpg',
           '0a7c40ba87393e384c8494e4a9a284c9.jpg',
         ],
-        image:
-          'https://media.myshows.me/shows/small/d/ea/deaf1f9b397829ea23dc90991c90bbbc.jpg',
+        image: 'https://media.myshows.me/shows/small/d/ea/deaf1f9b397829ea23dc90991c90bbbc.jpg',
         onlineCount: null,
         promoUrl: null,
         category: 'show',
@@ -348,8 +329,7 @@ export const mockListJson: [
         voted: 86888,
         rating: 4.59,
         images: ['ea46cd91168bea7a0e6aa09a1d17a1e2.jpg'],
-        image:
-          'https://media.myshows.me/shows/small/e/a4/ea46cd91168bea7a0e6aa09a1d17a1e2.jpg',
+        image: 'https://media.myshows.me/shows/small/e/a4/ea46cd91168bea7a0e6aa09a1d17a1e2.jpg',
         onlineCount: null,
         promoUrl:
           'https://hd.kinopoisk.ru/film/42136048353b48cfa4225742c71e341e?utm_source=myshows\u0026utm_medium=paid_performance\u0026utm_campaign=shameless11\u0026utm_content=main_page_popular_promo\u0026utm_term=un_registered\u0026source=kinopoisk_paid_performance_myshows_shameless11_main_page_popular_promo_un_registered\u0026erid=4CQwVszH9pN7PW2NYJ5',
@@ -372,8 +352,7 @@ export const mockListJson: [
           '3a9b70b87f5ddf24aadc9f117c57cbc7.jpg',
           '86cb7ca8b4ab6512830a5065d919aef0.jpg',
         ],
-        image:
-          'https://media.myshows.me/shows/small/1/db/1db28eb1387f379e320ea8d1ab9f4337.jpg',
+        image: 'https://media.myshows.me/shows/small/1/db/1db28eb1387f379e320ea8d1ab9f4337.jpg',
         onlineCount: null,
         promoUrl: null,
         category: 'show',
@@ -394,8 +373,7 @@ export const mockListJson: [
           '68402cd5f00614415ebebd03c5ede330.jpg',
           'ba5cae5030a76228f0a01f890ba09a01.jpg',
         ],
-        image:
-          'https://media.myshows.me/shows/small/8/b0/8b0dae9bcfc6d889a2760a4c30eb7f91.jpg',
+        image: 'https://media.myshows.me/shows/small/8/b0/8b0dae9bcfc6d889a2760a4c30eb7f91.jpg',
         onlineCount: null,
         promoUrl: null,
         category: 'show',
@@ -411,8 +389,7 @@ export const mockListJson: [
         voted: 88893,
         rating: 4.62,
         images: ['3218792d85d3a7d35f72aeab0f73ec5d.jpg'],
-        image:
-          'https://media.myshows.me/shows/small/3/21/3218792d85d3a7d35f72aeab0f73ec5d.jpg',
+        image: 'https://media.myshows.me/shows/small/3/21/3218792d85d3a7d35f72aeab0f73ec5d.jpg',
         onlineCount: null,
         promoUrl: null,
         category: 'show',
@@ -434,8 +411,7 @@ export const mockListJson: [
           '714b0a71607b2629956c6051074c3dc0.jpg',
           '71e0b6617593b06a4cf86d79b124212b.jpg',
         ],
-        image:
-          'https://media.myshows.me/shows/small/e/e4/ee415da4a054992d8134315b43001dca.jpg',
+        image: 'https://media.myshows.me/shows/small/e/e4/ee415da4a054992d8134315b43001dca.jpg',
         onlineCount: null,
         promoUrl: null,
         category: 'show',
@@ -451,8 +427,7 @@ export const mockListJson: [
         voted: 68830,
         rating: 4.52,
         images: ['1643076861bb18165735f2b1809d0189.jpg'],
-        image:
-          'https://media.myshows.me/shows/small/1/64/1643076861bb18165735f2b1809d0189.jpg',
+        image: 'https://media.myshows.me/shows/small/1/64/1643076861bb18165735f2b1809d0189.jpg',
         onlineCount: null,
         promoUrl: null,
         category: 'show',
@@ -468,8 +443,7 @@ export const mockListJson: [
         voted: 67415,
         rating: 4.04,
         images: ['2c6846f8e0451ecb3bd00b72db4534f3.jpg'],
-        image:
-          'https://media.myshows.me/shows/small/2/c6/2c6846f8e0451ecb3bd00b72db4534f3.jpg',
+        image: 'https://media.myshows.me/shows/small/2/c6/2c6846f8e0451ecb3bd00b72db4534f3.jpg',
         onlineCount: null,
         promoUrl: null,
         category: 'show',
@@ -491,8 +465,7 @@ export const mockListJson: [
           '8b0e8b6d5df72cf12237012784146506.jpg',
           'bbee753283e3db223685ad0081a4cd92.jpg',
         ],
-        image:
-          'https://media.myshows.me/shows/small/8/7a/87ab0bc77f133fb61695e4b5959d2d8f.jpg',
+        image: 'https://media.myshows.me/shows/small/8/7a/87ab0bc77f133fb61695e4b5959d2d8f.jpg',
         onlineCount: null,
         promoUrl: null,
         category: 'show',
@@ -508,8 +481,7 @@ export const mockListJson: [
         voted: 59918,
         rating: 4.34,
         images: ['05724c51ed568f0c03539763fbcd806e.jpg'],
-        image:
-          'https://media.myshows.me/shows/small/0/57/05724c51ed568f0c03539763fbcd806e.jpg',
+        image: 'https://media.myshows.me/shows/small/0/57/05724c51ed568f0c03539763fbcd806e.jpg',
         onlineCount: null,
         promoUrl: null,
         category: 'show',
@@ -531,8 +503,7 @@ export const mockListJson: [
           'ee99582965dab7ad1fd1ebd89e125015.jpg',
           'c7eef6141c0e29f46ebfe401603203eb.jpg',
         ],
-        image:
-          'https://media.myshows.me/shows/small/5/a5/5a5e9ad21a8791543141dd867ec41521.jpg',
+        image: 'https://media.myshows.me/shows/small/5/a5/5a5e9ad21a8791543141dd867ec41521.jpg',
         onlineCount: null,
         promoUrl: null,
         category: 'show',
@@ -548,8 +519,7 @@ export const mockListJson: [
         voted: 71021,
         rating: 4.72,
         images: ['22d5550c0256b4fc9ad3dda787099428.jpg'],
-        image:
-          'https://media.myshows.me/shows/small/2/2d/22d5550c0256b4fc9ad3dda787099428.jpg',
+        image: 'https://media.myshows.me/shows/small/2/2d/22d5550c0256b4fc9ad3dda787099428.jpg',
         onlineCount: null,
         promoUrl:
           'https://www.kinopoisk.ru/film/1227803/watch/?utm_source=myshows\u0026utm_medium=paid_performance\u0026utm_campaign=%D1%81hernobyl\u0026utm_content=main_page_popular_promo\u0026utm_term=un_registered\u0026source=kinopoisk_paid_performance_myshows_%D1%81hernobyl_main_page_popular_promo_un_registered',
@@ -566,8 +536,7 @@ export const mockListJson: [
         voted: 67469,
         rating: 4.15,
         images: ['40246a16b23ed5c4c87ae8dfe04cd22d.jpg'],
-        image:
-          'https://media.myshows.me/shows/small/4/02/40246a16b23ed5c4c87ae8dfe04cd22d.jpg',
+        image: 'https://media.myshows.me/shows/small/4/02/40246a16b23ed5c4c87ae8dfe04cd22d.jpg',
         onlineCount: null,
         promoUrl: null,
         category: 'show',
@@ -583,8 +552,7 @@ export const mockListJson: [
         voted: 72409,
         rating: 4.56,
         images: ['caaab448e00bfbb60894053b9485c955.jpg'],
-        image:
-          'https://media.myshows.me/shows/small/c/aa/caaab448e00bfbb60894053b9485c955.jpg',
+        image: 'https://media.myshows.me/shows/small/c/aa/caaab448e00bfbb60894053b9485c955.jpg',
         onlineCount: null,
         promoUrl:
           'https://hd.kinopoisk.ru/film/42f2dbf8769771ee8e369dae46e6e677?utm_source=myshows\u0026utm_medium=paid_performance\u0026utm_campaign=doctorwho13\u0026utm_content=main_page_popular_promo\u0026utm_term=all\u0026source=kinopoisk_paid_performance_myshows_doctorwho13_main_page_popular_promo_all\u0026erid=4CQwVszH9pNAsuH21RR',
@@ -601,8 +569,7 @@ export const mockListJson: [
         voted: 76039,
         rating: 4.78,
         images: ['e47c3386832b8399ee0a8c8ccb0770d2.jpg'],
-        image:
-          'https://media.myshows.me/shows/small/e/47/e47c3386832b8399ee0a8c8ccb0770d2.jpg',
+        image: 'https://media.myshows.me/shows/small/e/47/e47c3386832b8399ee0a8c8ccb0770d2.jpg',
         onlineCount: null,
         promoUrl: null,
         category: 'show',
@@ -612,7 +579,6 @@ export const mockListJson: [
   },
 ]
 
-export const mockList =
-  'result' in mockListJson[1] ? mockListJson[1].result : []
+export const mockList = 'result' in mockListJson[1] ? mockListJson[1].result : []
 
 export const mockListItem = mockList[0]

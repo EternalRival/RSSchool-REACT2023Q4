@@ -1,5 +1,6 @@
 import { NotFoundPage } from '@pages/not-found-page'
+import { FC } from 'react'
 
-export default function NotFound() {
-  return <NotFoundPage />
-}
+const NotFound: FC = () => <NotFoundPage />
+
+export default NotFound

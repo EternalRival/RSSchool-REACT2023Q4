@@ -1,5 +1,6 @@
 import { MainPage } from '@pages/main-page'
+import { FC } from 'react'
 
-export default function Home() {
-  return <MainPage />
-}
+const Home: FC = () => <MainPage />
+
+export default Home

@@ -1,5 +1,6 @@
 import { Spinner } from '@entities/spinner'
+import { FC } from 'react'
 
-export default function Home() {
-  return <Spinner />
-}
+const Test: FC = () => <Spinner />
+
+export default Test

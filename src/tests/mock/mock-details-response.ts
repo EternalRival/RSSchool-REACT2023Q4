@@ -38,8 +38,7 @@ export const mockDetailsJson: GetResponse<GetByIdResponseBody> = {
       'b515afd004b8a71dc47520d330dfd453.jpg',
       '076a546fa74e98b80c3635a5a3975dff.jpg',
     ],
-    image:
-      'https://media.myshows.me/shows/normal/9/49/9492ce09d3a31c32ba559f5936dac888.jpg',
+    image: 'https://media.myshows.me/shows/normal/9/49/9492ce09d3a31c32ba559f5936dac888.jpg',
     genreIds: [28, 6, 25],
     network: {
       id: 1183,
@@ -56,8 +55,7 @@ export const mockDetailsJson: GetResponse<GetByIdResponseBody> = {
         airDate: '2017-01-16T09:00:00+0000',
         airDateUTC: '2017-01-15T21:00:00+0000',
         images: ['798770b335775d027c2e76b48cbe8076.jpg'],
-        image:
-          'https://media.myshows.me/episodes/normal/7/98/798770b335775d027c2e76b48cbe8076.jpg',
+        image: 'https://media.myshows.me/episodes/normal/7/98/798770b335775d027c2e76b48cbe8076.jpg',
         shortName: 's04e03',
         commentsCount: 1390,
         isSpecial: false,
@@ -71,8 +69,7 @@ export const mockDetailsJson: GetResponse<GetByIdResponseBody> = {
         airDate: '2017-01-09T09:00:00+0000',
         airDateUTC: '2017-01-08T21:00:00+0000',
         images: ['52a7ac9fe83c36d76751fe08e82b8804.jpg'],
-        image:
-          'https://media.myshows.me/episodes/normal/5/2a/52a7ac9fe83c36d76751fe08e82b8804.jpg',
+        image: 'https://media.myshows.me/episodes/normal/5/2a/52a7ac9fe83c36d76751fe08e82b8804.jpg',
         shortName: 's04e02',
         commentsCount: 834,
         isSpecial: false,
@@ -86,8 +83,7 @@ export const mockDetailsJson: GetResponse<GetByIdResponseBody> = {
         airDate: '2017-01-02T09:00:00+0000',
         airDateUTC: '2017-01-01T21:00:00+0000',
         images: ['f7695fd4c2ffd4fe4781ab1a75a21fe6.jpg'],
-        image:
-          'https://media.myshows.me/episodes/normal/f/76/f7695fd4c2ffd4fe4781ab1a75a21fe6.jpg',
+        image: 'https://media.myshows.me/episodes/normal/f/76/f7695fd4c2ffd4fe4781ab1a75a21fe6.jpg',
         shortName: 's04e01',
         commentsCount: 847,
         isSpecial: false,
@@ -101,8 +97,7 @@ export const mockDetailsJson: GetResponse<GetByIdResponseBody> = {
         airDate: '2015-11-26T03:00:00+0000',
         airDateUTC: '2015-11-25T15:00:00+0000',
         images: ['759ee83ec3b329d6747c1170ad94adf2.jpg'],
-        image:
-          'https://media.myshows.me/episodes/normal/7/59/759ee83ec3b329d6747c1170ad94adf2.jpg',
+        image: 'https://media.myshows.me/episodes/normal/7/59/759ee83ec3b329d6747c1170ad94adf2.jpg',
         shortName: 's04 special-2',
         commentsCount: 780,
         isSpecial: true,
@@ -116,8 +111,7 @@ export const mockDetailsJson: GetResponse<GetByIdResponseBody> = {
         airDate: '2014-01-13T08:00:00+0000',
         airDateUTC: '2014-01-12T20:00:00+0000',
         images: ['8cb3514c449151c363b0398cd4e31658.jpg'],
-        image:
-          'https://media.myshows.me/episodes/normal/8/cb/8cb3514c449151c363b0398cd4e31658.jpg',
+        image: 'https://media.myshows.me/episodes/normal/8/cb/8cb3514c449151c363b0398cd4e31658.jpg',
         shortName: 's03e03',
         commentsCount: 237,
         isSpecial: false,
@@ -131,8 +125,7 @@ export const mockDetailsJson: GetResponse<GetByIdResponseBody> = {
         airDate: '2014-01-06T08:00:00+0000',
         airDateUTC: '2014-01-05T20:00:00+0000',
         images: ['501c68d71b7dc8912432d78d1db197ca.jpg'],
-        image:
-          'https://media.myshows.me/episodes/normal/5/01/501c68d71b7dc8912432d78d1db197ca.jpg',
+        image: 'https://media.myshows.me/episodes/normal/5/01/501c68d71b7dc8912432d78d1db197ca.jpg',
         shortName: 's03e02',
         commentsCount: 120,
         isSpecial: false,
@@ -146,8 +139,7 @@ export const mockDetailsJson: GetResponse<GetByIdResponseBody> = {
         airDate: '2014-01-02T08:00:00+0000',
         airDateUTC: '2014-01-01T20:00:00+0000',
         images: ['0dfc9496d1e587e61def68266e26df5d.jpg'],
-        image:
-          'https://media.myshows.me/episodes/normal/0/df/0dfc9496d1e587e61def68266e26df5d.jpg',
+        image: 'https://media.myshows.me/episodes/normal/0/df/0dfc9496d1e587e61def68266e26df5d.jpg',
         shortName: 's03e01',
         commentsCount: 100,
         isSpecial: false,
@@ -161,8 +153,7 @@ export const mockDetailsJson: GetResponse<GetByIdResponseBody> = {
         airDate: '2013-12-26T05:00:00+0000',
         airDateUTC: '2013-12-25T17:00:00+0000',
         images: ['df240b39cc8c2943e73b929b18c8b1a9.jpg'],
-        image:
-          'https://media.myshows.me/episodes/normal/d/f2/df240b39cc8c2943e73b929b18c8b1a9.jpg',
+        image: 'https://media.myshows.me/episodes/normal/d/f2/df240b39cc8c2943e73b929b18c8b1a9.jpg',
         shortName: 's03 special-2',
         commentsCount: 21,
         isSpecial: true,
@@ -176,8 +167,7 @@ export const mockDetailsJson: GetResponse<GetByIdResponseBody> = {
         airDate: '2013-12-25T04:30:00+0000',
         airDateUTC: '2013-12-24T16:30:00+0000',
         images: ['647bf709812d124aca2dad0166c42cd6.jpg'],
-        image:
-          'https://media.myshows.me/episodes/normal/6/47/647bf709812d124aca2dad0166c42cd6.jpg',
+        image: 'https://media.myshows.me/episodes/normal/6/47/647bf709812d124aca2dad0166c42cd6.jpg',
         shortName: 's03 special-1',
         commentsCount: 18,
         isSpecial: true,
@@ -191,8 +181,7 @@ export const mockDetailsJson: GetResponse<GetByIdResponseBody> = {
         airDate: '2012-01-24T09:00:00+0000',
         airDateUTC: '2012-01-23T21:00:00+0000',
         images: ['712bd52a522b12fd16e0489a89a053f3.jpg'],
-        image:
-          'https://media.myshows.me/episodes/normal/7/12/712bd52a522b12fd16e0489a89a053f3.jpg',
+        image: 'https://media.myshows.me/episodes/normal/7/12/712bd52a522b12fd16e0489a89a053f3.jpg',
         shortName: 's02 special-1',
         commentsCount: 25,
         isSpecial: true,
@@ -206,8 +195,7 @@ export const mockDetailsJson: GetResponse<GetByIdResponseBody> = {
         airDate: '2012-01-16T09:00:00+0000',
         airDateUTC: '2012-01-15T21:00:00+0000',
         images: ['2d24b3b41448fd32a58d14186504d515.jpg'],
-        image:
-          'https://media.myshows.me/episodes/normal/2/d2/2d24b3b41448fd32a58d14186504d515.jpg',
+        image: 'https://media.myshows.me/episodes/normal/2/d2/2d24b3b41448fd32a58d14186504d515.jpg',
         shortName: 's02e03',
         commentsCount: 118,
         isSpecial: false,
@@ -221,8 +209,7 @@ export const mockDetailsJson: GetResponse<GetByIdResponseBody> = {
         airDate: '2012-01-09T09:00:00+0000',
         airDateUTC: '2012-01-08T21:00:00+0000',
         images: ['264b9c8ad757587d08d6b3270eabddff.jpg'],
-        image:
-          'https://media.myshows.me/episodes/normal/2/64/264b9c8ad757587d08d6b3270eabddff.jpg',
+        image: 'https://media.myshows.me/episodes/normal/2/64/264b9c8ad757587d08d6b3270eabddff.jpg',
         shortName: 's02e02',
         commentsCount: 69,
         isSpecial: false,
@@ -236,8 +223,7 @@ export const mockDetailsJson: GetResponse<GetByIdResponseBody> = {
         airDate: '2012-01-02T09:00:00+0000',
         airDateUTC: '2012-01-01T21:00:00+0000',
         images: ['ea81fdbd97af1ba9ba7ca5007e709794.jpg'],
-        image:
-          'https://media.myshows.me/episodes/normal/e/a8/ea81fdbd97af1ba9ba7ca5007e709794.jpg',
+        image: 'https://media.myshows.me/episodes/normal/e/a8/ea81fdbd97af1ba9ba7ca5007e709794.jpg',
         shortName: 's02e01',
         commentsCount: 141,
         isSpecial: false,
@@ -251,8 +237,7 @@ export const mockDetailsJson: GetResponse<GetByIdResponseBody> = {
         airDate: '2010-08-31T08:00:00+0000',
         airDateUTC: '2010-08-30T20:00:00+0000',
         images: ['11064fae0f0a336172a860e60f073050.jpg'],
-        image:
-          'https://media.myshows.me/episodes/normal/1/10/11064fae0f0a336172a860e60f073050.jpg',
+        image: 'https://media.myshows.me/episodes/normal/1/10/11064fae0f0a336172a860e60f073050.jpg',
         shortName: 's01 special-2',
         commentsCount: 26,
         isSpecial: true,
@@ -266,8 +251,7 @@ export const mockDetailsJson: GetResponse<GetByIdResponseBody> = {
         airDate: '2010-08-31T08:00:00+0000',
         airDateUTC: '2010-08-30T20:00:00+0000',
         images: ['d1b8e842e38ba4e9159ededf5c681d5b.jpg'],
-        image:
-          'https://media.myshows.me/episodes/normal/d/1b/d1b8e842e38ba4e9159ededf5c681d5b.jpg',
+        image: 'https://media.myshows.me/episodes/normal/d/1b/d1b8e842e38ba4e9159ededf5c681d5b.jpg',
         shortName: 's01 special-1',
         commentsCount: 49,
         isSpecial: true,
@@ -281,8 +265,7 @@ export const mockDetailsJson: GetResponse<GetByIdResponseBody> = {
         airDate: '2010-08-09T08:00:00+0000',
         airDateUTC: '2010-08-08T20:00:00+0000',
         images: ['19943942c0e19b9f549fa851f3c19837.jpg'],
-        image:
-          'https://media.myshows.me/episodes/normal/1/99/19943942c0e19b9f549fa851f3c19837.jpg',
+        image: 'https://media.myshows.me/episodes/normal/1/99/19943942c0e19b9f549fa851f3c19837.jpg',
         shortName: 's01e03',
         commentsCount: 98,
         isSpecial: false,
@@ -296,8 +279,7 @@ export const mockDetailsJson: GetResponse<GetByIdResponseBody> = {
         airDate: '2010-08-02T08:00:00+0000',
         airDateUTC: '2010-08-01T20:00:00+0000',
         images: ['ba0a584e7625deceef79218d71e61428.jpg'],
-        image:
-          'https://media.myshows.me/episodes/normal/b/a0/ba0a584e7625deceef79218d71e61428.jpg',
+        image: 'https://media.myshows.me/episodes/normal/b/a0/ba0a584e7625deceef79218d71e61428.jpg',
         shortName: 's01e02',
         commentsCount: 77,
         isSpecial: false,
@@ -311,8 +293,7 @@ export const mockDetailsJson: GetResponse<GetByIdResponseBody> = {
         airDate: '2010-07-26T08:00:00+0000',
         airDateUTC: '2010-07-25T20:00:00+0000',
         images: ['60df857387ba08321c482c53adf9f2a3.jpg'],
-        image:
-          'https://media.myshows.me/episodes/normal/6/0d/60df857387ba08321c482c53adf9f2a3.jpg',
+        image: 'https://media.myshows.me/episodes/normal/6/0d/60df857387ba08321c482c53adf9f2a3.jpg',
         shortName: 's01e01',
         commentsCount: 259,
         isSpecial: false,
@@ -324,5 +305,4 @@ export const mockDetailsJson: GetResponse<GetByIdResponseBody> = {
   id: 1,
 }
 
-export const mockDetails =
-  'result' in mockDetailsJson ? mockDetailsJson.result : {}
+export const mockDetails = 'result' in mockDetailsJson ? mockDetailsJson.result : {}
