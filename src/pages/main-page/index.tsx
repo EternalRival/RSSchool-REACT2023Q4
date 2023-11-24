@@ -4,6 +4,7 @@ import { BottomSection } from '@widgets/bottom-section'
 import { TopSection } from '@widgets/top-section'
 import { FC } from 'react'
 import { mockDetails } from '../../tests/mock/mock-details-response'
+import { DetailedSection } from '@features/detailed-section'
 
 export const MainPage: FC = () => {
   return (
@@ -14,10 +15,7 @@ export const MainPage: FC = () => {
         <TopSection />
         <BottomSection />
       </main>
-      <DetailedCard
-        handleClose={() => {}}
-        {...mockDetails}
-      />
+      {/* <DetailedSection /> */}
     </>
   )
 }
