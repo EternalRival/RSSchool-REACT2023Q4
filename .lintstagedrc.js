@@ -1,12 +1,16 @@
 const path = require('path')
 
-const buildEslintCommand = (filenames) => {
+const eslintCmd = (filenames) => {
   const fileList = filenames.map((f) => path.relative(process.cwd(), f))
   return `next lint --fix --file ${fileList.join(' --file ')}`
 }
 
+const formatCmd = 'prettier -luw'
+
+const stylelintCmd = 'stylelint --mw 0 --fix'
+
 module.exports = {
-  '*': 'prettier -luw',
-  '*.{js,jsx,ts,tsx}': [buildEslintCommand],
-  '*.css': 'stylelint --mw 0 --fix',
+  '*': [formatCmd],
+  '*.{js,jsx,ts,tsx}': [eslintCmd],
+  '*.css': [stylelintCmd],
 }
