@@ -5,7 +5,7 @@ const Document: FC = () => (
   <Html lang="en">
     <Head />
     <body>
-      <Main /> 
+      <Main />
       <NextScript />
     </body>
   </Html>
