@@ -19,9 +19,18 @@
       "@features/*": ["./src/features/*"],
       "@widgets/*": ["./src/widgets/*"],
       "@pages/*": ["./src/pages/*"],
+      "@tests/*": ["./src/tests/*"],
       "@redux/*": ["./src/redux/*"]
-    }
+    },
+    "types": ["vitest/globals"]
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "src/entities/detailed-card/detailed-card.spec.jsx",
+    "jest.polyfills.cts",
+    "vitest.config.mts"
+  ],
   "exclude": ["node_modules"]
 }

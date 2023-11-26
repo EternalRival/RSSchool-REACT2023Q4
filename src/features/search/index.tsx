@@ -2,9 +2,9 @@ import { defaultQueryValue, queryParamName } from '@shared/constants'
 import { FC, FormEventHandler } from 'react'
 import { SearchIcon } from './ui/search-icon'
 
-type Props = { setSubmitValue: (value: string) => void }
+type Props = { submitValue: string; setSubmitValue: (value: string) => void }
 
-export const Search: FC<Props> = ({ setSubmitValue }) => {
+export const Search: FC<Props> = ({ submitValue, setSubmitValue }) => {
   const handleFormSubmit: FormEventHandler = (e) => {
     e.preventDefault()
     if (e.target instanceof HTMLFormElement) {
@@ -25,7 +25,7 @@ export const Search: FC<Props> = ({ setSubmitValue }) => {
         name={queryParamName}
         placeholder="Search…"
         className="flex-grow rounded px-2 shadow-md ring-1 ring-inset ring-teal-400 focus:outline-none focus:ring-2 focus:ring-inset"
-        defaultValue={defaultQueryValue}
+        defaultValue={submitValue}
         autoComplete="off"
       />
       <button className="aspect-square cursor-pointer rounded bg-teal-100 shadow-md ring-1 ring-inset ring-teal-400 hover:brightness-110 active:brightness-100">

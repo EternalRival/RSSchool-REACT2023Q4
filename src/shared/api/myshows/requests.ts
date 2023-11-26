@@ -13,7 +13,11 @@ export type TVShowListResponse = {
 const composeFetchArgs = (body: BodyInit): RequestInit => {
   return {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json', 'Accept-Language': defaultLanguage },
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept-Language': defaultLanguage,
+      'Cache-Control': 'public, s-maxage=60, stale-while-revalidate=359',
+    },
     body,
   }
 }

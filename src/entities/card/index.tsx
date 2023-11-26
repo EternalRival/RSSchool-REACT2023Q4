@@ -1,11 +1,10 @@
-import { FC, ReactEventHandler } from 'react'
-// import { NavLink, useLocation } from 'react-router-dom'
 import { ApiShowSummary } from '@shared/api/myshows/types/api-show-summary.type'
+import { detailsParamName } from '@shared/constants'
 import Image from 'next/image'
-import cardImagePlaceholder from './ui/card-image-placeholder.webp'
 import Link from 'next/link'
-import { Endpoint, detailsParamName } from '@shared/constants'
 import { useRouter } from 'next/router'
+import { FC } from 'react'
+import cardImagePlaceholder from './ui/card-image-placeholder.webp'
 
 const StyledStatus: FC<Pick<ApiShowSummary, 'status'>> = ({ status }) => {
   switch (status) {
@@ -32,8 +31,8 @@ export const Card: FC<CardProps> = ({ id, title, status, year, image, totalSeaso
     >
       <h2 className="break-words p-4 text-2xl font-bold">{title}</h2>
       <Image
-        className={'inline-block max-w-full object-contain align-top'}
-        src={image ?? cardImagePlaceholder}
+        className={'inline-block object-contain align-top'}
+        src={image || cardImagePlaceholder}
         alt={`${title} image`}
         width={320}
         height={180}

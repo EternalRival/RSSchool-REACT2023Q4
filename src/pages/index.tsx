@@ -20,27 +20,32 @@ import { useRouter } from 'next/router'
 import { FC } from 'react'
 
 type Props = {
-  paginationData: {
+  searchParamsData: {
+    [queryParamName]: string
     [pageParamName]: number
     [pageSizeParamName]: number
   }
   cardListData: TVShowListResponse
   detailedCardData: GetByIdResponseBody | null
 }
-export const getServerSideProps: GetServerSideProps = async ({ query }): Promise<{ props: Props }> => {
+export const getServerSideProps: GetServerSideProps = async ({ query, res }): Promise<{ props: Props }> => {
+  res.setHeader('Cache-Control', 'public, s-maxage=60, stale-while-revalidate=359')
+
+  const search = parseQueryParam(query[queryParamName], defaultQueryValue)
   const page = +parseQueryParam(query[pageParamName], defaultPageValue)
   const pageSize = +parseQueryParam(query[pageSizeParamName], defaultPageSizeValue)
 
   return {
     props: {
-      paginationData: {
+      searchParamsData: {
+        [queryParamName]: search,
         [pageParamName]: page,
         [pageSizeParamName]: pageSize,
       },
       cardListData: await fetchList({
         params: {
           search: {
-            query: parseQueryParam(query[queryParamName], defaultQueryValue),
+            query: search,
           },
           page: page - 1,
           pageSize,
@@ -58,8 +63,9 @@ export const getServerSideProps: GetServerSideProps = async ({ query }): Promise
   }
 }
 
-const Home: FC<Props> = ({ detailedCardData, cardListData, paginationData }) => {
+const Home: FC<Props> = ({ detailedCardData, cardListData, searchParamsData }) => {
   const router = useRouter()
+
   return (
     <>
       <main className="flex flex-col justify-between">
@@ -69,6 +75,7 @@ const Home: FC<Props> = ({ detailedCardData, cardListData, paginationData }) => 
 
         <div className="z-20 bg-white p-4 text-center shadow-[0_0_1rem_#000a]">
           <Search
+            submitValue={searchParamsData[queryParamName]}
             setSubmitValue={(value) => {
               router.push({ query: { ...router.query, [pageParamName]: defaultPageValue, [queryParamName]: value } })
             }}
@@ -83,8 +90,8 @@ const Home: FC<Props> = ({ detailedCardData, cardListData, paginationData }) => 
           <Pagination
             count={cardListData.count}
             defaultPageSize={+defaultPageSizeValue}
-            page={paginationData[pageParamName]}
-            pageSize={paginationData[pageSizeParamName]}
+            page={searchParamsData[pageParamName]}
+            pageSize={searchParamsData[pageSizeParamName]}
             pageSizeOptions={[5, 10, 20, 30, 50]}
             setPage={(value) => router.push({ query: { ...router.query, [pageParamName]: value } })}
             setPageSize={(value) =>
