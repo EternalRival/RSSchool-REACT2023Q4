@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react'
-import NotFound from './404'
+import NotFound from './404.page'
 
 describe('404 Page', () => {
   it('404 page has proper heading', async () => {

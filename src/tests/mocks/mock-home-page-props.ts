@@ -1,8 +1,8 @@
 import { pageParamName, pageSizeParamName, queryParamName } from '@shared/constants'
 import { mockList } from './mock-list-response'
-import { HomeProps } from '@pages/index'
 import { TVShowListResponse } from '@shared/api/myshows/requests'
 import { GetByIdResponseBody } from '@shared/api/myshows/types/get-by-id-response-body.type'
+import { HomeProps } from '@pages/index.page'
 
 type Props = {
   search?: string

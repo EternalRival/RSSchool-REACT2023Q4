@@ -1,4 +1,4 @@
-import Home from '@pages/index'
+import Home from '@pages/index.page'
 import { render, screen } from '@testing-library/react'
 import { createMockHomePageProps } from '@tests/mocks/mock-home-page-props'
 import { mockRouter } from '@tests/test-utils'

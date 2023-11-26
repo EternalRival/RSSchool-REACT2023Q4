@@ -69,7 +69,7 @@ const Home: FC<HomeProps> = ({ detailedCardData, cardListData, searchParamsData 
   return (
     <>
       <main className="flex flex-col justify-between">
-        <h1 hidden={false}>TV Shows App</h1>
+        <h1 hidden={true}>TV Shows App</h1>
 
         <ErrorThrowingButton />
 

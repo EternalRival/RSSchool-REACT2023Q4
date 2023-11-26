@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react'
-import InternalServerError from './500'
+import InternalServerError from './500.page'
 
 describe('500 Page', () => {
   it('500 page has proper heading', async () => {

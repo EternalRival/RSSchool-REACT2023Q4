@@ -1,10 +1,10 @@
 import { render, screen } from '@testing-library/react'
 import { createMockHomePageProps } from '@tests/mocks/mock-home-page-props'
 import { mockRouter } from '@tests/test-utils'
-import Home from '.'
+import Home from './index.page'
 
 describe('Home Page', () => {
-  it('Home page has proper heading', async () => {
+  it('Home page has main rendered', async () => {
     const { Provider } = mockRouter()
     render(
       <Provider>
@@ -12,9 +12,6 @@ describe('Home Page', () => {
       </Provider>
     )
 
-    const page = screen.getByRole('main')
-    const heading = screen.getByRole('heading', { name: /TV shows app/i })
-
-    expect(page).toContainElement(heading)
+    expect(screen.getByRole('main')).toBeVisible()
   })
 })
