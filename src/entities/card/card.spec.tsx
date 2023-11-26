@@ -1,16 +1,18 @@
-import { mockListItem } from '@shared/api/myshows/mocks/mock-list-response'
+import { mockListItem } from '@tests/mocks/mock-list-response'
 import { render, screen, within } from '@testing-library/react'
 import { Card } from '.'
-import { MockRouterProvider } from '@tests/test-utils'
+import { mockRouter } from '@tests/test-utils'
+import userEvent from '@testing-library/user-event'
 
 describe('Card', () => {
-  // const user = userEvent.setup()
+  const user = userEvent.setup()
 
   it('Ensure that the card component renders the relevant card data', async () => {
+    const { Provider } = mockRouter()
     render(
-      <MockRouterProvider>
+      <Provider>
         <Card {...mockListItem} />
-      </MockRouterProvider>
+      </Provider>
     )
 
     const { title, year, totalSeasons, rating } = mockListItem
@@ -26,26 +28,43 @@ describe('Card', () => {
   })
 
   // it('Validate that clicking on a card opens a detailed card component', async () => {
+  //   const { router, Provider } = mockRouter()
   //   render(
-  //     <MemoryRouterWithStore
-  //       element={
-  //         <>
-  //           <Card {...mockListItem} />
-  //           <Outlet />
-  //         </>
-  //       }
-  //       subElement={<DetailedSection />}
-  //       subPath={`${Endpoint.DETAILS}:id`}
-  //     />,
+  //     <Provider>
+  //       <Card {...mockListItem} />
+  //     </Provider>
   //   )
+  //   console.log(location.href)
 
   //   expect(screen.queryByRole('complementary')).toBeNull()
+
   //   await user.click(screen.getByRole('link'))
 
-  //   expect(await screen.findByRole('complementary')).toBeVisible()
+  //   console.log(router)
+
+  //   // expect(router.route).toBeCalledWith('/?details=7718')
+  //   // expect(await screen.findByRole('complementary')).toBeVisible()
+
+  //   // render(
+  //   //   <MemoryRouterWithStore
+  //   //     element={
+  //   //       <>
+  //   //         <Card {...mockListItem} />
+  //   //         <Outlet />
+  //   //       </>
+  //   //     }
+  //   //     subElement={<DetailedSection />}
+  //   //     subPath={`${Endpoint.DETAILS}:id`}
+  //   //   />,
+  //   // )
+
+  //   // expect(screen.queryByRole('complementary')).toBeNull()
+  //   // await user.click(screen.getByRole('link'))
+
+  //   // expect(await screen.findByRole('complementary')).toBeVisible()
   // })
 
-  // it('Check that clicking triggers an additional API call to fetch detailed information', async () => {
+  // it.todo('Check that clicking triggers an additional API call to fetch detailed information', async () => {
   //   render(
   //     <MemoryRouterWithStore
   //       element={
@@ -56,7 +75,7 @@ describe('Card', () => {
   //       }
   //       subElement={<DetailedSection />}
   //       subPath={`${Endpoint.DETAILS}:id`}
-  //     />,
+  //     />
   //   )
 
   //   const apiCallSpy = vi.spyOn(MyShowsApiService, 'useGetByIdQuery')

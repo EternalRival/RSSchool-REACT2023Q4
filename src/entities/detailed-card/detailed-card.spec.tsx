@@ -1,4 +1,4 @@
-import { mockDetails } from '@shared/api/myshows/mocks/mock-details-response'
+import { mockDetails } from '@tests/mocks/mock-details-response'
 import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { DetailedCard } from '.'

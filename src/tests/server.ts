@@ -1,5 +1,5 @@
-import { mockDetailsJson } from '@shared/api/myshows/mocks/mock-details-response'
-import { mockListJson } from '@shared/api/myshows/mocks/mock-list-response'
+import { mockDetailsJson } from '@tests/mocks/mock-details-response'
+import { mockListJson } from '@tests/mocks/mock-list-response'
 import { apiUrl } from '@shared/constants'
 import { isObject } from '@shared/lib/is-object'
 import { HttpResponse, http } from 'msw'
@@ -22,5 +22,5 @@ export const server = setupServer(
     }
 
     return HttpResponse.error()
-  }),
+  })
 )

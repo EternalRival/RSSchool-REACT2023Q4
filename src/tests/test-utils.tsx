@@ -1,6 +1,6 @@
 import { RouterContext } from 'next/dist/shared/lib/router-context.shared-runtime'
 import { NextRouter } from 'next/router'
-import { FC, ReactNode, useMemo } from 'react'
+import { FC, ReactNode } from 'react'
 
 const useRouterDefaultProps: NextRouter = {
   route: '',
@@ -22,10 +22,23 @@ const useRouterDefaultProps: NextRouter = {
   isPreview: false,
 }
 
-export const MockRouterProvider: FC<{
-  children: ReactNode
-  nextRouterProps?: Partial<NextRouter>
-}> = ({ children, nextRouterProps }) => {
-  const routerProps = useMemo(() => ({ ...useRouterDefaultProps, ...nextRouterProps }), [nextRouterProps])
-  return <RouterContext.Provider value={routerProps}>{children}</RouterContext.Provider>
+// export const composeMockRouter: (
+//   children: ReactNode,
+//   nextRouterProps?: Partial<NextRouter>
+// ) => { router: NextRouter; provider: JSX.Element } = (children, nextRouterProps) => {
+//   const router = { ...useRouterDefaultProps, ...nextRouterProps }
+//   return {
+//     router,
+//     provider: <RouterContext.Provider value={router}>{children}</RouterContext.Provider>,
+//   }
+// }
+export const mockRouter: (nextRouterProps?: Partial<NextRouter>) => {
+  router: NextRouter
+  Provider: FC<{ children: ReactNode }>
+} = (nextRouterProps) => {
+  const router = { ...useRouterDefaultProps, ...nextRouterProps }
+  return {
+    router,
+    Provider: ({ children }) => <RouterContext.Provider value={router}>{children}</RouterContext.Provider>,
+  }
 }
