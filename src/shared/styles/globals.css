@@ -1,0 +1,33 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  max-height: 100dvh;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.scrollbar::-webkit-scrollbar {
+  width: 0.4rem;
+  background-color: #000;
+  border-radius: 1rem;
+}
+
+.scrollbar::-webkit-scrollbar-thumb {
+  background-color: #000;
+  border-radius: 1rem;
+}
+
+.scrollbar::-webkit-scrollbar-track {
+  background-color: #fffa;
+}
+
+#__next {
+  display: flex;
+  justify-content: space-between;
+  max-height: inherit;
+}
+
+#__next > * {
+  flex: 1 1 50%;
+}
