@@ -1,11 +1,8 @@
-import { mockDetails } from '@tests/mocks/mock-details-response'
 import { render, screen } from '@testing-library/react'
-import userEvent from '@testing-library/user-event'
+import { mockDetails } from '@tests/mocks/mock-details-response'
 import { DetailedCard } from '.'
 
 describe('Detailed Card', () => {
-  const user = userEvent.setup()
-
   it('Make sure the detailed card component correctly displays the detailed card data', async () => {
     const detailsTextContentList = [
       mockDetails.title,
@@ -43,32 +40,5 @@ describe('Detailed Card', () => {
         expect(detailedCard).toContainHTML(detail)
       }
     })
-  })
-
-  it('Ensure that clicking the close button hides the component', async () => {
-    /* mockUseRouter()
-
-    const getServerSidePropsSpy = vi.spyOn(HomeExports, 'getServerSideProps')
-
-    console.log(getServerSidePropsSpy.mock.lastCall)
-
-    render(
-      <Home
-        detailedCardData={null}
-        searchParamsData={{ search: '', page: +defaultPageValue, pageSize: +defaultPageSizeValue }}
-        cardListData={{ count: 300, list: mockList }}
-      />,
-    )
-
-    await user.click(within(screen.getByRole('list')).getAllByRole('link')[0])
-
-    const detailedCard = await screen.findByRole('complementary')
-    expect(detailedCard).toBeVisible()
-
-    await user.click(screen.getByRole('button', { name: /close button/i }))
-
-    expect(detailedCard).not.toBeVisible() */
-
-    expect(1).toBe(1)
   })
 })

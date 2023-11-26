@@ -1,9 +1,8 @@
 import { apiUrl, defaultLanguage } from '@shared/constants'
-import { GetRequestBody } from './types/get-request-body.type'
 import { ApiShowSummary } from './types/api-show-summary.type'
 import { GetByIdRequestBody } from './types/get-by-id-request-body.type'
 import { GetByIdResponseBody } from './types/get-by-id-response-body.type'
-import { ParsedUrlQuery } from 'querystring'
+import { GetRequestBody } from './types/get-request-body.type'
 
 export type TVShowListResponse = {
   count: number

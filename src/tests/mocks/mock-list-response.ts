@@ -579,6 +579,8 @@ export const mockListJson: [GetResponse<number>, GetResponse<ApiShowSummary[]>] 
   },
 ]
 
+export const mockCount = 'result' in mockListJson[0] ? mockListJson[0].result : 0
+
 export const mockList = 'result' in mockListJson[1] ? mockListJson[1].result : []
 
 export const mockListItem = mockList[0]

@@ -22,16 +22,6 @@ const useRouterDefaultProps: NextRouter = {
   isPreview: false,
 }
 
-// export const composeMockRouter: (
-//   children: ReactNode,
-//   nextRouterProps?: Partial<NextRouter>
-// ) => { router: NextRouter; provider: JSX.Element } = (children, nextRouterProps) => {
-//   const router = { ...useRouterDefaultProps, ...nextRouterProps }
-//   return {
-//     router,
-//     provider: <RouterContext.Provider value={router}>{children}</RouterContext.Provider>,
-//   }
-// }
 export const mockRouter: (nextRouterProps?: Partial<NextRouter>) => {
   router: NextRouter
   Provider: FC<{ children: ReactNode }>

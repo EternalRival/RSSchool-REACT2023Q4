@@ -1,34 +1,22 @@
-// import { render, screen } from '@testing-library/react'
-// import userEvent from '@testing-library/user-event'
-// import { StoreProvider } from 'app/redux/store'
-// import { RouterProvider, createBrowserRouter } from 'react-router-dom'
-// import { Endpoint, pageParamName } from '@shared/constants'
-// import { BottomSection } from 'widgets/bottom-section'
+import Home from '@pages/index'
+import { render, screen } from '@testing-library/react'
+import { createMockHomePageProps } from '@tests/mocks/mock-home-page-props'
+import { mockRouter } from '@tests/test-utils'
 
 describe('Pagination', () => {
-  // const user = userEvent.setup()
-  // const getPageParam = (): string => {
-  //   return new URLSearchParams(location.search).get(pageParamName) ?? ''
-  // }
+  it('Pagination component is visible on Main page', async () => {
+    const { Provider } = mockRouter()
+    render(
+      <Provider>
+        <Home {...createMockHomePageProps()} />
+      </Provider>
+    )
 
-  it('Make sure the component updates URL query parameter when page changes', async () => {
-    // render(
-    //   <StoreProvider>
-    //     <RouterProvider
-    //       router={createBrowserRouter([
-    //         { path: Endpoint.ROOT, element: <BottomSection /> },
-    //       ])}
-    //     />
-    //   </StoreProvider>
-    // )
+    const buttons = [/go to first/i, /go to prev/i, /current page/i, /go to next/i, /go to last/i].map((alt) => {
+      return screen.getByRole('button', { name: alt })
+    })
+    const select = screen.getByRole('combobox', { name: /items per page select element/i })
 
-    // const initialPage = getPageParam()
-    // expect(initialPage).toSatisfy<string>((value) => ['', '1'].includes(value))
-
-    // for (let i = 2; i <= 10; i += 1) {
-    //   await user.click(await screen.findByLabelText('go to next'))
-    //   expect(getPageParam()).toBe(i.toString())
-    // }
-    expect(1).toBe(1)
+    buttons.concat([select]).forEach((element) => expect(element).toBeVisible())
   })
 })
