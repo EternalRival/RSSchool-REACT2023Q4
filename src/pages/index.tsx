@@ -19,7 +19,7 @@ import { GetServerSideProps } from 'next'
 import { useRouter } from 'next/router'
 import { FC } from 'react'
 
-type Props = {
+export type HomeProps = {
   searchParamsData: {
     [queryParamName]: string
     [pageParamName]: number
@@ -28,7 +28,7 @@ type Props = {
   cardListData: TVShowListResponse
   detailedCardData: GetByIdResponseBody | null
 }
-export const getServerSideProps: GetServerSideProps = async ({ query, res }): Promise<{ props: Props }> => {
+export const getServerSideProps: GetServerSideProps = async ({ query, res }): Promise<{ props: HomeProps }> => {
   res.setHeader('Cache-Control', 'public, s-maxage=60, stale-while-revalidate=359')
 
   const search = parseQueryParam(query[queryParamName], defaultQueryValue)
@@ -63,7 +63,7 @@ export const getServerSideProps: GetServerSideProps = async ({ query, res }): Pr
   }
 }
 
-const Home: FC<Props> = ({ detailedCardData, cardListData, searchParamsData }) => {
+const Home: FC<HomeProps> = ({ detailedCardData, cardListData, searchParamsData }) => {
   const router = useRouter()
 
   return (
