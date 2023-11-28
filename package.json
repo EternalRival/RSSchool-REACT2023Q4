@@ -6,8 +6,28 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "lint:cmd": "eslint --ext .ts,.tsx --report-unused-disable-directives --no-inline-config --max-warnings 0",
+    "lint": "npm run lint:cmd -- .",
+    "lint:fix": "npm run lint -- --fix",
+    "lints:fix": "stylelint --mw 0 --fix \"src/**/*.css\"",
+    "fix": "prettier -luw .",
+    "fix:all": "npm run fix && npm run lint:fix && npm run lints:fix",
+    "preview": "vite preview",
+    "prepare": "husky install"
+  },
+  "lint-staged": {
+    "*": "prettier -luw",
+    "*.{ts,tsx}": "npm run lint:cmd -- --fix",
+    "*.css": "stylelint --mw 0 --fix"
+  },
+  "stylelint": {
+    "extends": [
+      "stylelint-config-standard",
+      "stylelint-config-clean-order"
+    ],
+    "rules": {
+      "selector-class-pattern": "^[a-z][a-zA-Z0-9]+$"
+    }
   },
   "prettier": {
     "endOfLine": "auto",
@@ -34,6 +54,9 @@
     "husky": "8.0.3",
     "lint-staged": "15.1.0",
     "prettier": "3.1.0",
+    "stylelint": "15.11.0",
+    "stylelint-config-clean-order": "5.2.0",
+    "stylelint-config-standard": "34.0.0",
     "typescript": "5.3.2",
     "vite": "5.0.3"
   },
