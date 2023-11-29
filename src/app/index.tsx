@@ -1,5 +1,9 @@
-import { FC } from 'react';
+import { FC } from 'react'
+import { RouterProvider, createBrowserRouter } from 'react-router-dom'
+import { routes } from './router'
 
 export const App: FC = () => {
-  return <h1 className="ring">App</h1>;
-};
+  const router = createBrowserRouter(routes)
+
+  return <RouterProvider router={router} />
+}
