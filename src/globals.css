@@ -50,7 +50,7 @@ a:active {
 
 fieldset {
   display: grid;
-  grid-template-columns: auto 0fr;
+  grid-template-columns: auto auto;
   gap: 0.2rem;
   justify-items: start;
 
@@ -66,8 +66,46 @@ input[type='number'],
 input[type='email'],
 input[type='password'] {
   padding: 0.25rem 0.4rem;
+  border: 1px solid #000;
+
+  &:invalid,
+  &.invalid {
+    border: 1px solid #f00;
+  }
 }
 
 input[type='checkbox'] {
   transform: scale(1.2);
+}
+
+.password-strength {
+  --progress-color: gray;
+
+  grid-column-start: 2;
+  height: 0.8rem;
+  border: 1px solid gray;
+
+  &::-webkit-progress-bar {
+    background-color: transparent;
+  }
+
+  &::-webkit-progress-value {
+    background-color: var(--progress-color);
+  }
+
+  &,
+  &::-webkit-progress-bar,
+  &::-webkit-progress-value {
+    border-radius: 1rem;
+  }
+}
+
+.form-error-message {
+  grid-column: span 2;
+
+  height: 1rem;
+  padding-inline: 0.25rem;
+
+  font-size: 0.66rem;
+  color: #f00;
 }

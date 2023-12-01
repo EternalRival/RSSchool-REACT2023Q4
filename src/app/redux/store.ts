@@ -1,7 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit'
 import { firstReducer } from './slices/first.slice'
 
-const store = configureStore({
+export const store = configureStore({
   reducer: {
     firstForm: firstReducer,
   },
