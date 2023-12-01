@@ -23,7 +23,7 @@ This task shouldn't be based on the previous 5 modules.
       - Add the following npm scripts:
         - `lint`: For running the lint command.
         - `fix`: For running Prettier's fix command.
-5. Add **React Hook Form**, **Yup**, **Redux Toolkit** and **React Router** to the application. <!-- TODO -->
+5. Add **React Hook Form**, **Yup**, **Redux Toolkit** and **React Router** to the application.
 6. Routing. There will be 3 routes:
    - Main, should have links to other 2 routes
    - Route for the form created using uncontrolled components approach

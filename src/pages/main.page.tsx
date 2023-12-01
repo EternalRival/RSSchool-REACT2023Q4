@@ -1,5 +1,10 @@
+import { Navigation } from '@features/navigation'
+import { SubmitTiles } from '@features/submit-tiles'
 import { FC } from 'react'
 
-export const MainPage: FC = () => {
-  return <h1>Main Page</h1>
-}
+export const MainPage: FC = () => (
+  <main>
+    <Navigation />
+    <SubmitTiles />
+  </main>
+)

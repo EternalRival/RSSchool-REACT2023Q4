@@ -1,8 +1,8 @@
-import { ErrorPage } from '@pages/error-page'
-import { MainPage } from '@pages/main-page'
-import { NotFoundPage } from '@pages/not-found-page'
-import { ReactHookFormPage } from '@pages/react-hook-form-page'
-import { UncontrolledComponentsPage } from '@pages/uncontrolled-components-page'
+import { ErrorPage } from '@pages/error.page'
+import { MainPage } from '@pages/main.page'
+import { NotFoundPage } from '@pages/not-found.page'
+import { ReactHookFormPage } from '@pages/react-hook-form.page'
+import { UncontrolledComponentsPage } from '@pages/uncontrolled-components.page'
 import { Endpoint } from '@shared/enums/endpoint.enum'
 
 export const routes = [
