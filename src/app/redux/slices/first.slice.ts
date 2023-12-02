@@ -1,5 +1,15 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit'
-import { SubmitData } from './first.type'
+
+export type SubmitData = {
+  name: string | null
+  age: number | null
+  email: string | null
+  password: string | null
+  gender: string | null
+  terms: boolean | null
+  picture: string | null
+  country: string | null
+}
 
 type State = SubmitData[]
 
