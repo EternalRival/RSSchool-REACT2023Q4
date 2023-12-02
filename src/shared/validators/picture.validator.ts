@@ -1,6 +1,11 @@
 import { ValidateFunction, validate } from '@shared/validation/lib/validate'
-import { isStringSchema } from '@shared/validation/schemas/is-string.schema'
+import { hasSmallSizeSchema } from '@shared/validation/schemas/has-small-size.schema'
+import { isJpgOrPngSchema } from '@shared/validation/schemas/is-jpg-or-png.schema'
 
-export const validateGender: ValidateFunction<string> = (value) =>
-  validate(isStringSchema, value)
-// TODO
+export const validatePictureSize: ValidateFunction<unknown> = (value) => {
+  return validate(hasSmallSizeSchema, value, 'should be smaller (<1MB)')
+}
+
+export const validatePictureExtension: ValidateFunction<unknown> = (value) => {
+  return validate(isJpgOrPngSchema, value, 'should be jpg or png')
+}

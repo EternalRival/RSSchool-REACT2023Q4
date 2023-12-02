@@ -5,6 +5,7 @@ type Props = {
   id: string
   type?: HTMLInputTypeAttribute
   validateErrors?: string[]
+  accept?: string
 }
 
 export const FormInput: FC<Props> = ({
@@ -12,6 +13,7 @@ export const FormInput: FC<Props> = ({
   id,
   type = 'text',
   validateErrors = [],
+  accept,
 }) => {
   return (
     <>
@@ -21,6 +23,8 @@ export const FormInput: FC<Props> = ({
         id={id}
         name={id}
         className={validateErrors.length > 0 ? 'invalid' : ''}
+        accept={accept}
+        autoComplete="off"
       />
       <span className="form-error-message">{validateErrors.join(', ')}</span>
     </>

@@ -14,6 +14,10 @@ import {
   validatePasswordSpecialCharacter,
   validatePasswordUppercasedLetter,
 } from '@shared/validators/password.validator'
+import {
+  validatePictureExtension,
+  validatePictureSize,
+} from '@shared/validators/picture.validator'
 import { validateTerms } from '@shared/validators/terms.validator'
 import { FC, FormEventHandler, useState } from 'react'
 import { Form, useNavigate } from 'react-router-dom'
@@ -27,6 +31,7 @@ export const UncontrolledComponentsPage: FC = () => {
       ['passwordErrors', new Set()],
       ['passwordConfirmErrors', new Set()],
       ['termsErrors', new Set()],
+      ['pictureErrors', new Set()],
     ])
   )
   const dispatch = useAppDispatch()
@@ -46,17 +51,6 @@ export const UncontrolledComponentsPage: FC = () => {
     const setErrors = (key: string, text: string, isValid: boolean): void => {
       errors.get(key)?.[isValid ? 'delete' : 'add'](text)
     }
-
-    /* 
-name
-age
-email
-password
-gender
-acceptTermsAndConditions
-picture
-country
- */
 
     const name = await validateName(formData.get('name'))
     setErrors('nameErrors', name.message, name.isValid)
@@ -99,9 +93,20 @@ country
 
     const gender = await validateGender(formData.get('gender'))
 
-    console.log({ terms: formData.get('terms') })
     const terms = await validateTerms(formData.get('terms'))
     setErrors('termsErrors', terms.message, terms.isValid)
+
+    const pictureFormData = formData.get('picture')
+
+    const pictureChecks = await Promise.all([
+      validatePictureSize(pictureFormData),
+      validatePictureExtension(pictureFormData),
+    ])
+    pictureChecks.forEach(({ message, isValid }) => {
+      setErrors('pictureErrors', message, isValid)
+    })
+
+    // const picture = fileToBase64(pictureFormData)
 
     if (Array.from(errors.values()).some((set) => set.size > 0)) {
       setValidateErrors(errors)
@@ -179,34 +184,26 @@ country
 
   return (
     <main>
-      <Form navigate={false} onSubmit={handleSubmit}>
+      <Form navigate={false} noValidate={true} onSubmit={handleSubmit}>
         <fieldset>
           <legend>Uncontrolled Components Form</legend>
-
-          {/* name (validate for first uppercased letter) */}
           <FormInput
             label="Name"
             id="name"
             validateErrors={getErrorList('nameErrors')}
           />
-
-          {/* age (should be number, no negative values) */}
           <FormInput
             label="Age"
             id="age"
             type="number"
             validateErrors={getErrorList('ageErrors')}
           />
-
-          {/* email (validate for email) */}
           <FormInput
             label="E-mail"
             id="email"
             type="email"
             validateErrors={getErrorList('emailErrors')}
           />
-
-          {/* 2 passwords (should match, display the password strength: 1 number, 1 uppercased letter, 1 lowercased letter, 1 special character) */}
           <FormPasswordInput
             label="Password"
             id="password"
@@ -217,25 +214,24 @@ country
             id="password-confirm"
             validateErrors={getErrorList('passwordConfirmErrors')}
           />
-
-          {/* gender (you can use radio buttons or select control) */}
-          <label htmlFor="gender">Gender: TODO</label>
+          <label htmlFor="gender">Gender:</label>
           <select name="gender" id="gender">
             <option value="male">male</option>
             <option value="female">female</option>
           </select>
-
-          {/* accept T&C (checkbox) */}
           <FormInput
             label="Terms & Conditions"
             id="terms"
             type="checkbox"
             validateErrors={getErrorList('termsErrors')}
           />
-
-          {/* input control to upload picture (validate size and extension, allow png jpeg, save in redux store as base64) */}
-          <label htmlFor="picture">Picture:</label>
-          <input type="file" id="picture" name="picture" />
+          <FormInput
+            label="Picture"
+            id="picture"
+            type="file"
+            validateErrors={getErrorList('pictureErrors')}
+            accept=".jpg,.png"
+          />
 
           {/* autocomplete control to select country (all countries shoudl be stored in the Redux store)  */}
           <label htmlFor="country">Country:</label>

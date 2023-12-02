@@ -54,6 +54,7 @@ export const FormPasswordInput: FC<Props> = ({
           )
           setPasswordStrength(results.filter(({ isValid }) => isValid).length)
         }}
+        autoComplete="off"
       />
       <progress
         className="password-strength"
