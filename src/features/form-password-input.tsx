@@ -3,7 +3,7 @@ import {
   validatePasswordNumber,
   validatePasswordSpecialCharacter,
   validatePasswordUppercasedLetter,
-} from '@shared/validators/password.validator'
+} from '@shared/validation/validators/password.validator'
 import { CSSProperties, FC, useState } from 'react'
 import { Property } from 'csstype'
 

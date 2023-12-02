@@ -3,22 +3,22 @@ import { addSubmitData } from '@app/redux/slices/first.slice'
 import { FormInput } from '@features/form-input'
 import { FormPasswordInput } from '@features/form-password-input'
 import { Endpoint } from '@shared/enums/endpoint.enum'
-import { validateAge } from '@shared/validators/age.validator'
-import { validateEMail } from '@shared/validators/email.validator'
-import { validateGender } from '@shared/validators/gender.validator'
-import { validateName } from '@shared/validators/name.validator'
+import { validateAge } from '@shared/validation/validators/age.validator'
+import { validateEMail } from '@shared/validation/validators/email.validator'
+import { validateGender } from '@shared/validation/validators/gender.validator'
+import { validateName } from '@shared/validation/validators/name.validator'
 import {
   validatePasswordLowercasedLetter,
   validatePasswordMatch,
   validatePasswordNumber,
   validatePasswordSpecialCharacter,
   validatePasswordUppercasedLetter,
-} from '@shared/validators/password.validator'
+} from '@shared/validation/validators/password.validator'
 import {
   validatePictureExtension,
   validatePictureSize,
-} from '@shared/validators/picture.validator'
-import { validateTerms } from '@shared/validators/terms.validator'
+} from '@shared/validation/validators/picture.validator'
+import { validateTerms } from '@shared/validation/validators/terms.validator'
 import { FC, FormEventHandler, useState } from 'react'
 import { Form, useNavigate } from 'react-router-dom'
 
