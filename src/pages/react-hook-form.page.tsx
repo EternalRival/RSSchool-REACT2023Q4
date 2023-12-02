@@ -1,5 +1,10 @@
+import { UncontrolledForm } from '@widgets/uncontrolled-form'
 import { FC } from 'react'
 
 export const ReactHookFormPage: FC = () => {
-  return <h1>ReactHook Form Page</h1>
+  return (
+    <main>
+      <UncontrolledForm />
+    </main>
+  )
 }

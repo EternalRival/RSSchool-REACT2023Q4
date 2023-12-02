@@ -16,7 +16,7 @@ type State = SubmitData[]
 const initialState = (): State => []
 
 const { actions, reducer } = createSlice({
-  name: 'firstForm',
+  name: 'submitHistory',
   initialState,
   reducers: {
     addSubmitData(state, { payload }: PayloadAction<SubmitData>) {
@@ -25,6 +25,6 @@ const { actions, reducer } = createSlice({
   },
 })
 
-export const firstReducer = reducer
+export const submitHistoryReducer = reducer
 
 export const { addSubmitData } = actions

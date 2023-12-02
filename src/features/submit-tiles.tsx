@@ -3,25 +3,15 @@ import { Tile } from '@entities/tile'
 import { FC } from 'react'
 
 export const SubmitTiles: FC = () => {
-  const list = useAppSelector(({ firstForm }) => firstForm)
-  console.log(list)
+  const list = useAppSelector(({ submitHistory }) => submitHistory)
+
   return (
-    <ul>
-      <li>
-        <Tile kek={null} />
-      </li>
-      <li>
-        <Tile kek={null} />
-      </li>
-      <li>
-        <Tile kek={null} />
-      </li>
-      <li>
-        <Tile kek={null} />
-      </li>
-      <li>
-        <Tile kek={null} />
-      </li>
+    <ul className="tile-list">
+      {list.map((tileData, i) => (
+        <li className="tile-list-item" key={i}>
+          <Tile {...tileData} />
+        </li>
+      ))}
     </ul>
   )
 }
