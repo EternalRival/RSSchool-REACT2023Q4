@@ -3,11 +3,8 @@ import { validateEMail } from '@shared/validation/validators/email.validator'
 import { validateGender } from '@shared/validation/validators/gender.validator'
 import { validateName } from '@shared/validation/validators/name.validator'
 import {
-  validatePasswordLowercasedLetter,
   validatePasswordMatch,
-  validatePasswordNumber,
-  validatePasswordSpecialCharacter,
-  validatePasswordUppercasedLetter,
+  validatePassword,
 } from '@shared/validation/validators/password.validator'
 import {
   validatePictureExtension,
@@ -47,29 +44,24 @@ export const validateForm: ValidateFormFunction = async (
 
   const passwordChecks = await Promise.all(
     [passwordFormData, passwordConfirmFormData].map((formDataValue) => {
-      return Promise.all([
-        validatePasswordNumber(formDataValue),
-        validatePasswordUppercasedLetter(formDataValue),
-        validatePasswordLowercasedLetter(formDataValue),
-        validatePasswordSpecialCharacter(formDataValue),
-      ])
+      return validatePassword(formDataValue)
     })
   )
 
   const passwordErrorKeys = ['passwordErrors', 'passwordConfirmErrors']
-  passwordErrorKeys.forEach((key, i) => {
+  passwordErrorKeys.forEach((key) => {
     const isMatched = validatePasswordMatch(
       passwordFormData,
       passwordConfirmFormData
     )
     setErrors(key, 'should match', isMatched)
-    passwordChecks[i].forEach(({ message, isValid }) => {
+    passwordChecks.forEach(({ message, isValid }) => {
       setErrors(key, message, isValid)
     })
   })
 
   const password = passwordChecks.flat().every(({ isValid }) => isValid)
-    ? passwordChecks[0][0]
+    ? passwordChecks[0]
     : { value: null }
 
   const gender = await validateGender(formData.get('gender'))

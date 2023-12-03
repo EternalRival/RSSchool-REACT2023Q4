@@ -1,5 +1,7 @@
 import { string } from 'yup'
 
+const message = 'valid email'
+
 export const eMailSchema = string()
-  .required()
-  .matches(/^.+@.+\..+$/i)
+  .required(message)
+  .matches(/^.+@.+\..+$/i, { message })

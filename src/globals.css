@@ -67,6 +67,14 @@ input[type='email'],
 input[type='password'] {
   padding: 0.25rem 0.4rem;
   border: 1px solid #000;
+
+  &::placeholder {
+    opacity: 0.5;
+  }
+
+  &.invalid {
+    border: 1px solid #f00;
+  }
 }
 
 input[type='checkbox'] {

@@ -1,10 +1,5 @@
-import {
-  validatePasswordLowercasedLetter,
-  validatePasswordNumber,
-  validatePasswordSpecialCharacter,
-  validatePasswordUppercasedLetter,
-} from '@shared/validation/validators/password.validator'
-import { CSSProperties, FC, useState } from 'react'
+import { passwordChecklist } from '@shared/validation/schemas/valid-password.schema'
+import { FC, useRef } from 'react'
 import { Property } from 'csstype'
 
 type Props = {
@@ -13,32 +8,22 @@ type Props = {
   validateErrors?: string[]
 }
 
-const passwordValidators = [
-  validatePasswordNumber,
-  validatePasswordUppercasedLetter,
-  validatePasswordLowercasedLetter,
-  validatePasswordSpecialCharacter,
-] as const
-
 const maxStrength = 4
+
+const backgroundColors: Property.BackgroundColor[] = [
+  'transparent',
+  'red',
+  'orange',
+  'yellowgreen',
+  'green',
+]
 
 export const FormPasswordInput: FC<Props> = ({
   label,
   id,
   validateErrors = [],
 }) => {
-  const [passwordStrength, setPasswordStrength] = useState(0)
-
-  const progressColors: Property.BackgroundColor[] = [
-    'red',
-    'orange',
-    'yellowgreen',
-    'green',
-  ]
-
-  const progressColor = {
-    '--progress-color': progressColors[passwordStrength - 1],
-  } as CSSProperties
+  const progress = useRef<HTMLProgressElement>(null)
 
   return (
     <>
@@ -48,19 +33,25 @@ export const FormPasswordInput: FC<Props> = ({
         id={id}
         name={id}
         className={validateErrors.length > 0 ? 'invalid' : ''}
-        onChange={async ({ target }) => {
-          const results = await Promise.all(
-            passwordValidators.map((validate) => validate(target.value))
-          )
-          setPasswordStrength(results.filter(({ isValid }) => isValid).length)
+        onChange={({ target }) => {
+          if (progress.current) {
+            const passwordStrength = Array.from(
+              passwordChecklist.keys()
+            ).reduce((counter, regex) => counter + +regex.test(target.value), 0)
+
+            progress.current.value = passwordStrength
+            progress.current.style.setProperty(
+              '--progress-color',
+              backgroundColors[passwordStrength]
+            )
+          }
         }}
         autoComplete="off"
       />
       <progress
         className="password-strength"
         max={maxStrength}
-        value={passwordStrength}
-        style={progressColor}
+        ref={progress}
       />
       <span className="form-error-message">{validateErrors.join(', ')}</span>
     </>

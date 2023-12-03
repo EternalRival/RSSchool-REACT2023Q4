@@ -6,7 +6,7 @@ export type SubmitData = {
   email: string | null
   password: string | null
   gender: string | null
-  terms: boolean | null
+  terms: string | null
   picture: string | null
   country: string | null
 }

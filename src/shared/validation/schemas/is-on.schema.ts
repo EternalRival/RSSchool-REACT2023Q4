@@ -1,3 +1,5 @@
 import { string } from 'yup'
 
-export const isOnSchema = string().required().matches(/on/i)
+export const isOnOrTrueSchema = string()
+  .required()
+  .matches(/(on|true)/i, { message: 'should be enabled' })

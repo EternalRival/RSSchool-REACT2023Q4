@@ -1,3 +1,8 @@
 import { number } from 'yup'
 
-export const positiveNumberSchema = number().required().positive()
+const message = 'positive number'
+
+export const positiveNumberSchema = number()
+  .positive(message)
+  .typeError(message)
+  .required()

@@ -7,7 +7,7 @@ import { validateForm } from '@shared/lib/validate-form'
 import { FC, FormEventHandler, useState } from 'react'
 import { Form, useNavigate } from 'react-router-dom'
 
-export const UncontrolledForm: FC = () => {
+export const UncontrolledComponentsForm: FC = () => {
   const [validateErrors, setValidateErrors] = useState(
     new Map<string, Set<string>>([
       ['nameErrors', new Set()],
@@ -76,6 +76,7 @@ export const UncontrolledForm: FC = () => {
         <select name="gender" id="gender">
           <option value="male">male</option>
           <option value="female">female</option>
+          <option value="other">other</option>
         </select>
         <FormInput
           label="Terms & Conditions"
