@@ -31,7 +31,6 @@ export const ReactHookForm: FC = () => {
     dispatch(addSubmitData({ ...data, picture }))
     navigate(Endpoint.ROOT)
   }
-  console.log({ errors })
 
   return (
     <Form onSubmit={handleSubmit(handleFormSubmit)}>
