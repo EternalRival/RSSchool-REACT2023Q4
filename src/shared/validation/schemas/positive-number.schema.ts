@@ -5,4 +5,4 @@ const message = 'positive number'
 export const positiveNumberSchema = number()
   .positive(message)
   .typeError(message)
-  .required()
+  .required('required')

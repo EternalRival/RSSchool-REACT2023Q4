@@ -2,9 +2,9 @@ import { string } from 'yup'
 
 export const passwordChecklist = new Map([
   [/\d/, '1 number'],
-  [/[A-Z]/, '1 uppercased'],
-  [/[a-z]/, '1 lowercased'],
-  [/[@$!%*?&]/, '1 special'],
+  [/[A-ZА-Я]/, '1 uppercased'],
+  [/[a-zа-я]/, '1 lowercased'],
+  [/[!"№;%:?*()@#$^&.,\\/~`']/, '1 special'],
 ])
 
 export const validPasswordSchema = string()
@@ -30,4 +30,4 @@ export const validPasswordSchema = string()
       ? ctx.createError({ message: messages.join(', ') })
       : true
   })
-  .required()
+  .required('required')

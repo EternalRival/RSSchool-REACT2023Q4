@@ -34,4 +34,4 @@ export const validPictureSchema = mixed(
       ? ctx.createError({ message: messages.join(', ') })
       : true
   })
-  .required('should be a file')
+  .required('required')
