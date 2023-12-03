@@ -4,7 +4,7 @@ export const passwordChecklist = new Map([
   [/\d/, '1 number'],
   [/[A-ZА-Я]/, '1 uppercased'],
   [/[a-zа-я]/, '1 lowercased'],
-  [/[!"№;%:?*()@#$^&.,\\|/~`{}[\]'_-+=]/, '1 special'],
+  [/[!"№;%:?*()@#$^&.,~`{}'_\-+=[/|\\\]]/, '1 special'],
 ])
 
 export const validPasswordSchema = string()
