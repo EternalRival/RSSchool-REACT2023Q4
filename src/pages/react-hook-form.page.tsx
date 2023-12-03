@@ -5,7 +5,6 @@ export const ReactHookFormPage: FC = () => {
   return (
     <main>
       <ReactHookForm />
-      <img src="https://i.imgur.com/JPv3FA0.png" alt="" />
     </main>
   )
 }

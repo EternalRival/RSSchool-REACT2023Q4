@@ -1,32 +1,26 @@
-import { FC, HTMLInputTypeAttribute } from 'react'
+import { FC, InputHTMLAttributes, ReactNode, useId } from 'react'
 
 type Props = {
-  label: string
-  id: string
-  type?: HTMLInputTypeAttribute
-  validateErrors?: string[]
-  accept?: string
+  label: ReactNode
+  inputProps: InputHTMLAttributes<HTMLInputElement>
+  fieldError?: { message?: string }
 }
 
-export const FormInput: FC<Props> = ({
-  label,
-  id,
-  type = 'text',
-  validateErrors = [],
-  accept,
-}) => {
+export const FormInput: FC<Props> = ({ inputProps, label, fieldError }) => {
+  const id = useId()
+  const inputId = inputProps.id ?? id
+
   return (
     <>
-      <label htmlFor={id}>{label}:</label>
+      <label htmlFor={inputId}>{label}:</label>
       <input
-        type={type}
-        id={id}
-        name={id}
-        className={validateErrors.length > 0 ? 'invalid' : ''}
-        accept={accept}
+        className={fieldError ? 'invalid' : ''}
         autoComplete="off"
+        type="text"
+        id={inputId}
+        {...inputProps}
       />
-      <span className="form-error-message">{validateErrors.join(', ')}</span>
+      <span className="form-error-message">{fieldError?.message}</span>
     </>
   )
 }

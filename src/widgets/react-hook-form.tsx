@@ -1,15 +1,15 @@
 import { useAppDispatch, useAppSelector } from '@app/redux/hooks'
-import { FormInputPassword } from '@features/form-input-password.rhf'
-import { FormInput } from '@features/form-input.rhf'
+import { addSubmitData } from '@app/redux/slices/first.slice'
+import { FormInput } from '@features/form-input'
+import { FormInputPassword } from '@features/form-input-password'
 import { yupResolver } from '@hookform/resolvers/yup'
+import { Endpoint } from '@shared/enums/endpoint.enum'
+import { fileToBase64 } from '@shared/lib/file-converter'
+import { composedFormSchema } from '@shared/validation/schemas/composed-form.schema'
+import { FormFields } from '@shared/validation/types/form-fields.type'
 import { FC } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { Form, useNavigate } from 'react-router-dom'
-import { FormFields } from './types/form-fields.type'
-import { rhfComposedSchema } from './validation/rhf-composed.schema'
-import { addSubmitData } from '@app/redux/slices/first.slice'
-import { Endpoint } from '@shared/enums/endpoint.enum'
-import { fileToBase64 } from '@shared/lib/file-converter'
 
 export const ReactHookForm: FC = () => {
   const {
@@ -18,7 +18,7 @@ export const ReactHookForm: FC = () => {
     formState: { errors },
   } = useForm<FormFields>({
     mode: 'onChange',
-    resolver: yupResolver(rhfComposedSchema, { abortEarly: false }),
+    resolver: yupResolver(composedFormSchema, { abortEarly: false }),
   })
 
   const countries = useAppSelector((state) => state.countries)
@@ -26,12 +26,12 @@ export const ReactHookForm: FC = () => {
   const navigate = useNavigate()
 
   const handleFormSubmit: SubmitHandler<FormFields> = async (data) => {
-    const [file] = data.picture
+    const file = data.picture
     const picture = await fileToBase64(file)
     dispatch(addSubmitData({ ...data, picture }))
     navigate(Endpoint.ROOT)
   }
-  console.log(errors)
+  console.log({ errors })
 
   return (
     <Form onSubmit={handleSubmit(handleFormSubmit)}>
@@ -106,7 +106,7 @@ export const ReactHookForm: FC = () => {
           ))}
         </select>
       </fieldset>
-      <button>submit</button>
+      <button disabled={Object.keys(errors).length > 0}>submit</button>
     </Form>
   )
 }

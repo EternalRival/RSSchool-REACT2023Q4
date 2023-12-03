@@ -1,12 +1,11 @@
-import { FC, InputHTMLAttributes, ReactNode, useId, useRef } from 'react'
-import { FieldError } from 'react-hook-form'
-import { Property } from 'csstype'
 import { passwordChecklist } from '@shared/validation/schemas/valid-password.schema'
+import { Property } from 'csstype'
+import { FC, InputHTMLAttributes, ReactNode, useId, useRef } from 'react'
 
 type Props = {
   label: ReactNode
   inputProps: InputHTMLAttributes<HTMLInputElement>
-  fieldError?: FieldError
+  fieldError?: { message?: string }
 }
 
 export const FormInputPassword: FC<Props> = ({

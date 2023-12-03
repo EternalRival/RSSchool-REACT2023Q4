@@ -1,10 +1,19 @@
 import { mixed } from 'yup'
 
 export const validPictureSchema = mixed(
-  (input): input is FileList => input instanceof FileList
+  (input): input is File => input instanceof File
 )
+  .transform((value) => {
+    if (value instanceof File) {
+      return value
+    }
+    if (value instanceof FileList) {
+      return value.item(0)
+    }
+    return value
+  })
   .defined()
-  .test(([file], ctx) => {
+  .test((file, ctx) => {
     const messages: string[] = []
 
     if (file) {
@@ -25,4 +34,4 @@ export const validPictureSchema = mixed(
       ? ctx.createError({ message: messages.join(', ') })
       : true
   })
-  .required()
+  .required('should be a file')

@@ -6,6 +6,6 @@ export type FormFields = {
   'password-confirm': string
   gender: string
   terms: string
-  picture: FileList
+  picture: File
   country: string
 }
