@@ -5,6 +5,7 @@ import { FormInputPassword } from '@features/form-input-password'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { Endpoint } from '@shared/enums/endpoint.enum'
 import { fileToBase64 } from '@shared/lib/file-converter'
+import { getUUID } from '@shared/lib/get-uuid'
 import { composedFormSchema } from '@shared/validation/schemas/composed-form.schema'
 import { FormFields } from '@shared/validation/types/form-fields.type'
 import { FC } from 'react'
@@ -28,7 +29,7 @@ export const ReactHookForm: FC = () => {
   const handleFormSubmit: SubmitHandler<FormFields> = async (data) => {
     const file = data.picture
     const picture = await fileToBase64(file)
-    dispatch(addSubmitData({ ...data, picture }))
+    dispatch(addSubmitData({ ...data, picture, uuid: getUUID() }))
     navigate(Endpoint.ROOT)
   }
 
@@ -105,7 +106,9 @@ export const ReactHookForm: FC = () => {
           ))}
         </select>
       </fieldset>
-      <button disabled={Object.keys(errors).length > 0}>submit</button>
+      <button type="submit" disabled={Object.keys(errors).length > 0}>
+        submit
+      </button>
     </Form>
   )
 }

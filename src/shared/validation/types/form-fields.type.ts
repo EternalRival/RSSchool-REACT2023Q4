@@ -1,4 +1,4 @@
-export type FormFields = {
+export interface FormFields {
   name: string
   age: number
   email: string

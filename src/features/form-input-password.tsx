@@ -2,7 +2,7 @@ import { passwordChecklist } from '@shared/validation/schemas/valid-password.sch
 import { Property } from 'csstype'
 import { FC, InputHTMLAttributes, ReactNode, useId, useRef } from 'react'
 
-type Props = {
+interface Props {
   label: ReactNode
   inputProps: InputHTMLAttributes<HTMLInputElement>
   fieldError?: { message?: string }
@@ -41,9 +41,10 @@ export const FormInputPassword: FC<Props> = ({
 
           if (progress.current) {
             const regexList = Array.from(passwordChecklist.keys())
-            const strength = regexList.reduce((counter, regex) => {
-              return counter + +regex.test(e.target.value)
-            }, 0)
+            const strength = regexList.reduce(
+              (counter, regex) => counter + +regex.test(e.target.value),
+              0
+            )
             const color = backgroundColors[strength]
             progress.current.value = strength
             progress.current.style.setProperty('--progress-color', color)
@@ -59,3 +60,5 @@ export const FormInputPassword: FC<Props> = ({
     </>
   )
 }
+
+FormInputPassword.defaultProps = { fieldError: undefined }

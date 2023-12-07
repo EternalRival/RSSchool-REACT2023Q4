@@ -29,7 +29,7 @@ export const Tile: FC<SubmitData> = ({
           <dt className="tile-title">{title}</dt>
           <dd className="tile-detail">
             {title === 'Picture' ? (
-              <img src={picture ?? ''} alt="" width={'auto'} height={128} />
+              <img src={picture ?? ''} alt="" width="auto" height={128} />
             ) : (
               JSON.stringify(detail)
             )}

@@ -4,14 +4,17 @@ import { FormInput } from '@features/form-input'
 import { FormInputPassword } from '@features/form-input-password'
 import { Endpoint } from '@shared/enums/endpoint.enum'
 import { fileToBase64 } from '@shared/lib/file-converter'
+import { getUUID } from '@shared/lib/get-uuid'
 import { composedFormSchema } from '@shared/validation/schemas/composed-form.schema'
 import { FormFields } from '@shared/validation/types/form-fields.type'
 import { FC, FormEventHandler, useState } from 'react'
 import { Form, useNavigate } from 'react-router-dom'
 import { ValidationError } from 'yup'
 
-type ErrorMessage = { message: string }
-type ErrorList = {
+interface ErrorMessage {
+  message: string
+}
+interface ErrorList {
   name?: ErrorMessage
   age?: ErrorMessage
   email?: ErrorMessage
@@ -42,10 +45,12 @@ export const UncontrolledComponentsForm: FC = () => {
       return { submitData }
     } catch (e) {
       if (e instanceof ValidationError) {
-        const errors = e.inner.reduce<ErrorList>((acc, { path, message }) => {
-          return path ? { ...acc, [path]: { message } } : acc
-        }, {})
-        return { errors }
+        const submitErrors = e.inner.reduce<ErrorList>(
+          (acc, { path, message }) =>
+            path ? { ...acc, [path]: { message } } : acc,
+          {}
+        )
+        return { errors: submitErrors }
       }
       throw e
     }
@@ -57,20 +62,22 @@ export const UncontrolledComponentsForm: FC = () => {
       throw new Error('e.target is not HTMLFormElement')
     }
 
-    validateForm(e.target).then(async (result) => {
-      if ('errors' in result) {
-        setErrors(result.errors)
-      }
-      if ('submitData' in result) {
-        const { submitData } = result
-        const picture = await fileToBase64(submitData.picture)
-        dispatch(addSubmitData({ ...submitData, picture }))
-        navigate(Endpoint.ROOT)
-      }
-    })
+    validateForm(e.target)
+      .then(async (result) => {
+        if ('errors' in result) {
+          setErrors(result.errors)
+        }
+        if ('submitData' in result) {
+          const { submitData } = result
+          const picture = await fileToBase64(submitData.picture)
+          dispatch(addSubmitData({ ...submitData, picture, uuid: getUUID() }))
+          navigate(Endpoint.ROOT)
+        }
+      })
+      .catch(() => {})
   }
   return (
-    <Form navigate={false} noValidate={true} onSubmit={handleSubmit}>
+    <Form navigate={false} noValidate onSubmit={handleSubmit}>
       <fieldset>
         <legend>Uncontrolled Components Form</legend>
         <FormInput
@@ -133,7 +140,7 @@ export const UncontrolledComponentsForm: FC = () => {
           ))}
         </select>
       </fieldset>
-      <button>submit</button>
+      <button type="submit">submit</button>
     </Form>
   )
 }

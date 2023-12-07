@@ -3,7 +3,7 @@ export const fileToBase64 = (file: File): Promise<string | null> => {
   return new Promise((res, rej) => {
     fr.onloadend = (): void => {
       const { result } = fr
-      return res(typeof result === 'string' ? result : null)
+      res(typeof result === 'string' ? result : null)
     }
     fr.onerror = rej
     fr.readAsDataURL(file)

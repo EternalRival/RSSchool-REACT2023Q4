@@ -1,6 +1,6 @@
 import { FC, InputHTMLAttributes, ReactNode, useId } from 'react'
 
-type Props = {
+interface Props {
   label: ReactNode
   inputProps: InputHTMLAttributes<HTMLInputElement>
   fieldError?: { message?: string }
@@ -24,3 +24,5 @@ export const FormInput: FC<Props> = ({ inputProps, label, fieldError }) => {
     </>
   )
 }
+
+FormInput.defaultProps = { fieldError: undefined }

@@ -10,24 +10,20 @@ export const validPictureSchema = mixed(
     if (value instanceof FileList) {
       return value.item(0)
     }
-    return value
+    throw new Error('unexpected filetype')
   })
   .defined()
   .test((file, ctx) => {
     const messages: string[] = []
 
-    if (file) {
-      const { name, size } = file
+    const { name, size } = file
 
-      if (!['jpg', 'png'].includes(name.slice(name.lastIndexOf('.') + 1))) {
-        messages.push('should be jpg or png')
-      }
+    if (!['jpg', 'png'].includes(name.slice(name.lastIndexOf('.') + 1))) {
+      messages.push('should be jpg or png')
+    }
 
-      if (size > 1000000) {
-        messages.push('should be less than 1000000 bytes')
-      }
-    } else {
-      messages.push('should be a file')
+    if (size > 1000000) {
+      messages.push('should be less than 1000000 bytes')
     }
 
     return messages.length > 0

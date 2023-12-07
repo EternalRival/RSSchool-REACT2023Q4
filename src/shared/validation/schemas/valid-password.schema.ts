@@ -1,3 +1,4 @@
+import { isObject } from '@shared/lib/is-object'
 import { string } from 'yup'
 
 export const passwordChecklist = new Map([
@@ -20,8 +21,7 @@ export const validPasswordSchema = string()
 
     if (ctx.path.endsWith('-confirm')) {
       const originalPath = ctx.path.replace(/-confirm$/, '')
-      const originalValue = ctx.parent[originalPath]
-      if (originalValue !== value) {
+      if (isObject(ctx.parent) && ctx.parent[originalPath] !== value) {
         messages.push('must match')
       }
     }

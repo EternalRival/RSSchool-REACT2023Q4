@@ -7,8 +7,8 @@ export const SubmitTiles: FC = () => {
 
   return (
     <ul className="tile-list">
-      {list.map((tileData, i) => (
-        <li className="tile-list-item" key={i}>
+      {list.map((tileData) => (
+        <li className="tile-list-item" key={tileData.uuid}>
           <Tile {...tileData} />
         </li>
       ))}

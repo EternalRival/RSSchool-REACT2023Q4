@@ -1,6 +1,7 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit'
 
-export type SubmitData = {
+export interface SubmitData {
+  uuid: string
   name: string | null
   age: number | null
   email: string | null

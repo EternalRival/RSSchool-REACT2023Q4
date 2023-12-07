@@ -1,7 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { countries } from '@shared/json/countries.json'
 
-type Country = { name: string }
+interface Country {
+  name: string
+}
 
 type State = Country[]
 
